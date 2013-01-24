@@ -1,1 +1,8 @@
+
 = link_to "Ahreloco", root_path, :class => 'brand'
+%ul.nav.pull-right
+  %li
+    - if user_signed_in?
+      = link_to 'Cerrar session', signout_path
+    -  else
+      = link_to "Loggeate con tu cuenta de youtube", '/auth/youtube'

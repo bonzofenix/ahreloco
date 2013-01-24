@@ -6,18 +6,29 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
 end
+
 gem 'jquery-rails'
 gem "unicorn", ">= 4.3.1"
 gem "haml", ">= 3.1.7"
-gem "haml-rails", ">= 0.3.5", :group => :development
-gem "hpricot", ">= 0.8.6", :group => :development
-gem "ruby_parser", ">= 3.1.1", :group => :development
-gem "rspec-rails", ">= 2.12.2", :group => [:development, :test]
 gem "capybara", ">= 2.0.1", :group => :test
 gem "database_cleaner", ">= 0.9.1", :group => :test
 gem "email_spec", ">= 1.4.0", :group => :test
-gem "factory_girl_rails", ">= 4.1.0", :group => [:development, :test]
 gem "bootstrap-sass", ">= 2.2.2.0"
-gem "quiet_assets", ">= 1.0.1", :group => :development
 gem "figaro", ">= 0.5.3"
-gem "hub", ">= 1.10.2", :require => nil, :group => [:development]
+gem 'omniauth'
+gem 'omniauth-youtube'
+gem 'youtube_it', git:'https://github.com/kylejginavan/youtube_it'
+
+group :development do
+  gem "haml-rails", ">= 0.3.5"
+  gem "hpricot", ">= 0.8.6"
+  gem "ruby_parser", ">= 3.1.1"
+  gem "quiet_assets", ">= 1.0.1"
+  gem "hub", ">= 1.10.2", :require => nil
+end
+
+group :development, :test do
+  gem 'debugger'
+  gem "rspec-rails", ">= 2.12.2"
+  gem "factory_girl_rails", ">= 4.1.0"
+end
