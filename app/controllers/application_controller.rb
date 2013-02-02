@@ -11,6 +11,11 @@ class ApplicationController < ActionController::Base
       dev_key: ENV['DEV_KEY'], expires_at: Time.now + 50.minutes)
   end
 
+  def arl_client
+    @arl_client ||= YouTubeIt::Client.new(username:  ENV['ARL_USERNAME'],
+      password: ENV['ARL_PASSWORD'], dev_key: ENV['DEV_KEY'])
+  end
+
   private
 
   def current_user

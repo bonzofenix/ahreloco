@@ -17,6 +17,7 @@ gem "bootstrap-sass", ">= 2.2.2.0"
 gem "figaro", ">= 0.5.3"
 gem 'omniauth'
 gem 'omniauth-youtube'
+gem 'inherited_resources'
 gem 'youtube_it', git:'https://github.com/kylejginavan/youtube_it'
 
 group :development do
