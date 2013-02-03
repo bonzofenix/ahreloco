@@ -1,9 +1,11 @@
 
 = link_to "Ahreloco", root_path, class: 'brand'
 %ul.nav.pull-right
-  %li
-    - if user_signed_in?
+  - if user_signed_in?
+    %li
       = link_to 'Cerrar session', signout_path
-    -  else
-      = link_to 'Concursa con tu video', videos_path
+  -  else
+    %li
+      = link_to 'Concursa con tu video', new_video_path
+    %li
       = link_to "Loggeate con tu cuenta de youtube", '/auth/youtube'

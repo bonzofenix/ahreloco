@@ -27,9 +27,10 @@ ActiveRecord::Schema.define(:version => 20130123033619) do
     t.string   "player_url"
     t.string   "title"
     t.text     "serialized_thumbnails"
+    t.boolean  "is_complete",           :default => false
     t.integer  "user_id"
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
   end
 
 end
