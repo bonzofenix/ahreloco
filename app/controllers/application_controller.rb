@@ -1,4 +1,3 @@
-
 class ApplicationController < ActionController::Base
   protect_from_forgery
   helper_method :current_user, :user_signed_in?
@@ -10,10 +9,9 @@ class ApplicationController < ActionController::Base
       client_id: ENV['YOUTUBE_KEY'], client_secret: ENV['YOUTUBE_SECRET'],
       dev_key: ENV['DEV_KEY'], expires_at: Time.now + 50.minutes)
   end
-
-  def arl_client
-    @arl_client ||= YouTubeIt::Client.new(username:  ENV['ARL_USERNAME'],
-      password: ENV['ARL_PASSWORD'], dev_key: ENV['DEV_KEY'])
+  
+  def arl_manager
+ArlManager.new
   end
 
   private

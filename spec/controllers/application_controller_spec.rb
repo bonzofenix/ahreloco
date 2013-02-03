@@ -5,7 +5,7 @@ describe ApplicationController do
     controller.yt_client.should be_kind_of(YouTubeIt::Client)
   end
 
-  it 'returns a youtube client' do
-    controller.arl_client.should be_kind_of(YouTubeIt::Client)
+  it 'returns the arl_manager' do
+    controller.arl_manager.should be_kind_of(ArlManager)
   end
 end

@@ -3,7 +3,7 @@
 FactoryGirl.define do
   factory :video do
     title 'this is the title'
-    yt_id "MyString"
+    yt_id 'pw4F_0TWmE8'
     player_url "MyString"
   end
 end

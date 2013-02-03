@@ -44,6 +44,11 @@ describe VideosController do
         end.to change{ video.reload.is_complete }
       end
 
+      it 'adds videos to week conquests' do
+        controller.arl_manager.should_receive :add_video_to_week_playlist
+        get :save_video, save_video_params
+      end
+
       it 'redirects to current_user path' do
         get :save_video, save_video_params
         response.should redirect_to(user_path(user.id))

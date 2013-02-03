@@ -3,9 +3,9 @@
 %ul.nav.pull-right
   - if user_signed_in?
     %li
+      = link_to 'Concursa con tu video', new_video_path
+    %li
       = link_to 'Cerrar session', signout_path
   -  else
-    %li
-      = link_to 'Concursa con tu video', new_video_path
     %li
       = link_to "Loggeate con tu cuenta de youtube", '/auth/youtube'
