@@ -45,7 +45,7 @@ describe VideosController do
       end
 
       it 'adds videos to week conquests' do
-        controller.arl_manager.should_receive :add_video_to_week_playlist
+        ArlManager.any_instance.should_receive :add_video_to_week_playlist
         get :save_video, save_video_params
       end
 

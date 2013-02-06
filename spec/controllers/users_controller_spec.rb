@@ -2,18 +2,13 @@ require 'spec_helper'
 
 describe UsersController do
   let(:user){ create :user, :with_video }
+  let(:video){ create :video, user: user }
+  let(:other_video){ create :video, user: user }
 
-  describe 'GET index' do
-    it "returns http success" do
-      get 'index'
-      response.should be_success
-    end
 
-  end
-  
   describe 'get show' do
     before do
-      controller.should_receive(:check_for_new_videos)
+      ArlManager.any_instance.should_receive(:check_new_videos_for)
     end
 
     it "returns http success" do
@@ -32,10 +27,10 @@ describe UsersController do
     end
 
     it 'accepts params for default video' do
-     
-      get 'show', id: user.id
-      assigns(:default_video).should == user.videos.last
-      
+      video
+      other_video
+      get 'show', id: user.id, video_id: video.id
+      assigns(:default_video).should == video
     end
   end
 end

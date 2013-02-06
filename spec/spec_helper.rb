@@ -11,11 +11,15 @@ require 'factory_girl_rails'
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
 OmniAuth.config.test_mode = true
-OmniAuth.config.mock_auth[:youtube] = { 
+OmniAuth.config.mock_auth[:youtube] = OmniAuth::AuthHash.new( { 
   'provider' => 'youtube', 'uid' => '123545',
   'credentials'=> {'token' => 'this is the token'},
-  'info'=> {'nickname' => 'bonzo'}
-}
+  'info'=> {'nickname' => 'bonzo'},
+  'extra'=>{ 'user_hash' => { 'yt$username' => {'$t'=> 'bonzofenix'}}}})
+
+
+#extra = Hashie::Mash.new('user_hash'=>'')
+#OmniAuth.config.mock_auth[:youtube].stub!(:extra).and_return(extra)  
 
 RSpec.configure do |config|
   config.include EmailSpec::Helpers

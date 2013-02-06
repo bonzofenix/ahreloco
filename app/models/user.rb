@@ -33,7 +33,8 @@ class User < ActiveRecord::Base
       create! do |user|
         user.provider = auth["provider"]
         user.uid = auth["uid"]
-        user.name = auth["info"]["nickname"]
+        user.nickname = auth["info"]["nickname"]
+        user.username = auth.extra.user_hash.send('yt$username').send('$t')
       end
     end
   end

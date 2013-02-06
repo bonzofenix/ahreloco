@@ -16,7 +16,8 @@ ActiveRecord::Schema.define(:version => 20130123033619) do
   create_table "users", :force => true do |t|
     t.string   "provider"
     t.string   "uid"
-    t.string   "name"
+    t.string   "nickname"
+    t.string   "username"
     t.string   "mail"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false

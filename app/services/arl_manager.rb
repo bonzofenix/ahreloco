@@ -11,9 +11,15 @@ class ArlManager
     playlist = find_or_create_playlist(title)
     client.add_video_to_playlist(playlist.playlist_id, video.yt_id)
   end
-  
+
+  def check_new_videos_for(user)
+    videos = @client.videos_by(user: user.username).videos
+    user.add_videos(videos)
+  end
+
+  private   
   def find_or_create_playlist(title)
-    playlist = client.playlists.select{ |p| p.title == title }
+    playlist = @client.playlists.select{ |p| p.title == title }
     playlist = playlist.first if playlist
     playlist ||= client.add_playlist(title: title )
   end

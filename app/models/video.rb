@@ -1,4 +1,5 @@
 class Video < ActiveRecord::Base
+  belongs_to :user
   attr_accessible :player_url, :yt_id, :title, :thumbnails, :is_complete
 
   def thumbnails=(args)

@@ -4,7 +4,7 @@ FactoryGirl.define do
   factory :user do
     provider "youtube"
     uid "123"
-    name "bonzo"
+    username "bonzofenix"
     mail "bonzofenix@gmail.com"
 
     trait :with_video do

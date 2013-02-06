@@ -1,15 +1,16 @@
-%h2
-  Mis videos
+%h2= @default_video.title
 .row
   .span8
-    %iframe.youtube-player{frameborder: "0", height: "385", src: "http://www.youtube.com/embed/#{@videos.last}", type: "text/html", width: "640"}
+    %iframe.youtube-player{frameborder: "0", height: "385",
+      src: "http://www.youtube.com/embed/#{@default_video.yt_id}",
+      type: "text/html", width: "640"}
   .span4
     .videos
       - if @videos
         -@videos.each do |video|
           .video
             %h4
-              = link_to video.title, video.player_url
+              = link_to video.title,user_path(video_id: video.id)
             %p
               = image_tag(video.thumbnails.first[:url])
   
