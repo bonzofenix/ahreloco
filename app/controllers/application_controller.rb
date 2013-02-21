@@ -2,16 +2,20 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   helper_method :current_user, :user_signed_in?
 
-  def yt_client
+  def user_or_arl_client
+    if current_user
+      client
+    else
+      arl_manager.client
+    end
+  end
+
+  def client
     token = session[:yt_token]
-    @yt_client ||= YouTubeIt::OAuth2Client.new(client_access_token: token,
+    @client ||= YouTubeIt::OAuth2Client.new(client_access_token: token,
       client_refresh_token: token, 
       client_id: ENV['YOUTUBE_KEY'], client_secret: ENV['YOUTUBE_SECRET'],
       dev_key: ENV['DEV_KEY'], expires_at: Time.now + 50.minutes)
-  end
-  
-  def client
-    @client ||= YouTubeIt::Client.new(dev_key: ENV['DEV_KEY'])
   end
   
   def arl_manager

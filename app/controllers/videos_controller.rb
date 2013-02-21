@@ -14,7 +14,7 @@ class VideosController < InheritedResources::Base
   def save_video
     @video = Video.find(params[:video_id])
     if params[:status].to_i == 200
-      @video.update_attributes(yt_id: params[:id].to_s, is_complete: true)
+      @video.update_attributes(video_id: params[:id].to_s, is_complete: true)
       arl_manager.add_video_to_week_playlist @video 
       #Video.delete_incomplete_videos
     else

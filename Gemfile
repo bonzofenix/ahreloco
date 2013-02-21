@@ -1,12 +1,15 @@
 source 'https://rubygems.org'
 gem 'rails', '3.2.11'
 gem 'sqlite3'
+gem 'friendly_id'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
 end
+
+gem 'ilpomodoro', git: 'git://github.com/bonzofenix/ilpomodoro.git'
 
 gem 'jquery-rails'
 gem "unicorn", ">= 4.3.1"
@@ -19,6 +22,7 @@ gem "figaro", ">= 0.5.3"
 gem 'omniauth'
 gem 'omniauth-youtube'
 gem 'inherited_resources'
+gem 'js-routes'
 gem 'youtube_it', git:'https://github.com/kylejginavan/youtube_it'
 
 group :development do
@@ -30,6 +34,7 @@ group :development do
 end
 
 group :development, :test do
+  gem 'pry'
   gem 'timecop'
   gem 'debugger'
   gem "rspec-rails", ">= 2.12.2"

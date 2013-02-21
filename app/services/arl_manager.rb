@@ -9,7 +9,7 @@ class ArlManager
   def add_video_to_week_playlist(video)
     title = "concurso semana #{Date.today.cweek} del #{Date.today.year}"
     playlist = find_or_create_playlist(title)
-    client.add_video_to_playlist(playlist.playlist_id, video.yt_id)
+    client.add_video_to_playlist(playlist.playlist_id, video.video_id)
   end
 
   def check_new_videos_for(user)

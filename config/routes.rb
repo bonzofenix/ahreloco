@@ -10,7 +10,8 @@ Ahreloco::Application.routes.draw do
     new do
        post :upload
        get  :save_video
-     end
+    end
   end
     
+  resources :comments, only: [:index, :create]
 end

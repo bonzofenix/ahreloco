@@ -2,8 +2,11 @@
 .row
   .span8
     %iframe.youtube-player{frameborder: "0", height: "385",
-      src: "http://www.youtube.com/embed/#{@default_video.yt_id}",
+      src: "http://www.youtube.com/embed/#{@default_video.video_id}",
       type: "text/html", width: "640"}
+    - if current_user
+      = render 'comments/new',video_id: @default_video.video_id
+    = render 'comments/list'
   .span4
     .videos
       - if @videos
@@ -13,4 +16,6 @@
               = link_to video.title,user_path(video_id: video.id)
             %p
               = image_tag(video.thumbnails.first[:url])
-  
+
+- page_data('video-id' => @default_video.video_id )
+

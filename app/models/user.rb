@@ -1,11 +1,13 @@
 class User < ActiveRecord::Base
+ extend FriendlyId
+  friendly_id :username, use: :slugged
   has_many :videos
   attr_accessible :mail, :name, :provider, :uid
   
   def add_videos(new_videos)
     new_videos.each do |a_video|
-      unless videos.exists? yt_id: a_video.unique_id
-        videos.create!( yt_id: a_video.unique_id ,
+      unless videos.exists? video_id: a_video.unique_id
+        videos.create!( video_id: a_video.unique_id ,
           player_url: a_video.player_url,
           thumbnails: get_thumbnails_from(a_video),
           title: a_video.title)
@@ -33,7 +35,6 @@ class User < ActiveRecord::Base
       create! do |user|
         user.provider = auth["provider"]
         user.uid = auth["uid"]
-        user.nickname = auth["info"]["nickname"]
         user.username = auth.extra.user_hash.send('yt$username').send('$t')
       end
     end

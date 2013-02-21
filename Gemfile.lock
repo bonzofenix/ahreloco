@@ -1,4 +1,14 @@
 GIT
+  remote: git://github.com/bonzofenix/ilpomodoro.git
+  revision: a67d1ac02cc3f27afbe1fb55ec2c50842db7bf89
+  specs:
+    ilpomodoro (0.0.0)
+      hashie
+      highline
+      logging
+      terminal-notifier
+
+GIT
   remote: https://github.com/kylejginavan/youtube_it
   revision: 58372ddc07c1fae2819825c795001277d3a0aa06
   specs:
@@ -54,6 +64,7 @@ GEM
       xpath (~> 1.0.0)
     childprocess (0.3.6)
       ffi (~> 1.0, >= 1.0.6)
+    coderay (1.0.8)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -87,6 +98,7 @@ GEM
     ffi (1.3.1)
     figaro (0.5.3)
       rails (~> 3.0)
+    friendly_id (4.0.9)
     haml (3.1.7)
     haml-rails (0.3.5)
       actionpack (>= 3.1, < 4.1)
@@ -95,6 +107,7 @@ GEM
       railties (>= 3.1, < 4.1)
     has_scope (0.5.1)
     hashie (1.2.0)
+    highline (1.6.15)
     hike (1.2.1)
     hpricot (0.8.6)
     httpauth (0.2.0)
@@ -107,6 +120,8 @@ GEM
     jquery-rails (2.2.0)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
+    js-routes (0.8.4)
+      rails (>= 3.2)
     json (1.7.6)
     jwt (0.1.5)
       multi_json (>= 1.0)
@@ -116,12 +131,17 @@ GEM
     libwebsocket (0.1.7.1)
       addressable
       websocket
+    little-plugger (1.1.3)
+    logging (1.8.1)
+      little-plugger (>= 1.1.3)
+      multi_json (>= 1.3.6)
     mail (2.4.4)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    method_source (0.8.1)
     mime-types (1.19)
-    multi_json (1.5.0)
+    multi_json (1.6.1)
     multipart-post (1.1.5)
     nokogiri (1.5.6)
     oauth (0.4.7)
@@ -140,6 +160,10 @@ GEM
     omniauth-youtube (2.1)
       omniauth-oauth2 (~> 1.0)
     polyglot (0.3.3)
+    pry (0.9.12)
+      coderay (~> 1.0.5)
+      method_source (~> 0.8)
+      slop (~> 3.4)
     quiet_assets (1.0.1)
       railties (~> 3.1)
     rack (1.4.4)
@@ -196,12 +220,14 @@ GEM
       rubyzip
     sexp_processor (4.1.3)
     simple_oauth (0.2.0)
+    slop (3.4.3)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
     sqlite3 (1.3.7)
+    terminal-notifier (1.4.2)
     thor (0.16.0)
     tilt (1.3.3)
     timecop (0.4.4)
@@ -232,14 +258,18 @@ DEPENDENCIES
   email_spec (>= 1.4.0)
   factory_girl_rails (>= 4.1.0)
   figaro (>= 0.5.3)
+  friendly_id
   haml (>= 3.1.7)
   haml-rails (>= 0.3.5)
   hpricot (>= 0.8.6)
   hub (>= 1.10.2)
+  ilpomodoro!
   inherited_resources
   jquery-rails
+  js-routes
   omniauth
   omniauth-youtube
+  pry
   quiet_assets (>= 1.0.1)
   rails (= 3.2.11)
   rspec-rails (>= 2.12.2)

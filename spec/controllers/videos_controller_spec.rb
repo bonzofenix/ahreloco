@@ -32,10 +32,10 @@ describe VideosController do
     end
 
     describe 'when saving video' do
-      it 'updates the the yt id' do
+      it 'updates the the video id' do
         expect do
           get :save_video, save_video_params
-        end.to change{ video.reload.yt_id }
+        end.to change{ video.reload.video_id }
       end
 
       it 'sets as completed' do
@@ -51,7 +51,7 @@ describe VideosController do
 
       it 'redirects to current_user path' do
         get :save_video, save_video_params
-        response.should redirect_to(user_path(user.id))
+        response.should redirect_to(user_path(user.username))
       end
 
     end
