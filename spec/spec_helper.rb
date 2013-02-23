@@ -14,7 +14,8 @@ OmniAuth.config.test_mode = true
 OmniAuth.config.mock_auth[:youtube] = OmniAuth::AuthHash.new( { 
   'provider' => 'youtube', 'uid' => '123545',
   'credentials'=> {'token' => 'this is the token'},
-  'info'=> {'nickname' => 'bonzo'},
+  'info'=> {'nickname' => 'bonzo',  'image' => 'http://image_url.com',
+    'subscribers_count' => '3'},
   'extra'=>{ 'user_hash' => { 'yt$username' => {'$t'=> 'bonzofenix'}}}})
 
 

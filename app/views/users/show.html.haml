@@ -8,6 +8,8 @@
       = render 'comments/new',video_id: @default_video.video_id
     = render 'comments/list'
   .span4
+    .user_info.well
+      = image_tag @default_video.user.avatar_url
     .videos
       - if @videos
         -@videos.each do |video|

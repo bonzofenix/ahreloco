@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(:version => 20130215184541) do
     t.string   "comment_id"
     t.string   "content"
     t.string   "reply_to"
+    t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -26,10 +27,12 @@ ActiveRecord::Schema.define(:version => 20130215184541) do
     t.string   "provider"
     t.string   "uid"
     t.string   "username"
+    t.string   "avatar_url"
+    t.integer  "subscribers_count"
     t.string   "mail"
     t.string   "slug"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
 
   add_index "users", ["slug"], :name => "index_users_on_slug", :unique => true

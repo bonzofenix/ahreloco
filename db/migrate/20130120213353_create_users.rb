@@ -4,6 +4,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :provider
       t.string :uid
       t.string :username
+      t.string :avatar_url
+      t.integer :subscribers_count
       t.string :mail
       t.string :slug
 
