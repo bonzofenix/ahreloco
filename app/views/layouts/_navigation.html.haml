@@ -1,5 +1,21 @@
 
 = link_to "Ahreloco", root_path, class: 'brand'
+%ul.nav
+  %li.dropdown.programs
+    %a.dropdown-toggle.programs-btn(href="#")
+      Programas
+      %b.caret
+    %ul.dropdown-menu
+      - Program.all.each do |p|
+        %li.program
+          %a
+            = image_tag p.avatar_url
+            =  p.name
+        .channels.hide
+          %li
+            default borrame
+          -p.users do |u|
+            %li.channel= link_to u.username, users_path(u)
 %ul.nav.pull-right
   %li
     = link_to 'Concursa con tu video', new_video_path

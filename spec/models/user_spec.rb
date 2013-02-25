@@ -11,9 +11,41 @@ describe User do
       end.to change{Video.count}
     end
 
-    it 'adds the thumbnails' do
-      user.add_videos([youtube_it_video])
-      Video.last.thumbnails.length.should == video_thumbnails.length 
+
+    describe 'parsing video' do
+      before{ user.add_videos([youtube_it_video]) }
+      subject{ Video.last }
+
+      it 'adds the thumbnails' do
+        subject.thumbnails.length.should == video_thumbnails.length 
+      end
+
+      it 'adds the likes' do 
+        subject.likes.should_not be_nil
+      end 
+
+      it 'adds the dislikes' do 
+        subject.dislikes.should_not be_nil
+      end 
+
+      it 'adds the dislikes' do 
+        Video.last.rater_count.should_not be_nil
+      end 
+    end 
+  end
+  
+  describe 'rating' do  
+    before do
+      create :video, user: user, likes: 1, dislikes: 2
+      create :video, user: user, likes: 3, dislikes: 1
+    end
+
+    it 'returns the amounts of likes in a video' do
+      user.likes.should == 4
+    end
+
+    it 'returns the amounts of dislikes in a video' do
+      user.dislikes.should == 3
     end
   end
 end

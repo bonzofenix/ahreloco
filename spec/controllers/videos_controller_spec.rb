@@ -6,6 +6,7 @@ describe VideosController do
   let(:save_video_params) do
     { video_id: video.id, status: 200, id: '2rIwQs7C1T4' }
   end
+
   render_views
 
   describe 'when user is logged in' do
