@@ -11,7 +11,6 @@ class User < ActiveRecord::Base
           v.published_at = a_video.published_at
           v.view_count = a_video.view_count
           v.video_id = a_video.unique_id 
-          v.player_url = a_video.player_url,
           v.thumbnails = get_thumbnails_from(a_video)
           v.title = a_video.title
           if a_video.rating
