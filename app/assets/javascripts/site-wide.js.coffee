@@ -13,3 +13,8 @@ $ ->
   $('.programs').unbind('click')
   $('.program').click ->
     $(this).next().slideToggle()
+
+  $('.flexslider').flexslider
+    animation: "slide"
+    controlNav: "thumbnails"
+  

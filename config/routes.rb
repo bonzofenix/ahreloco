@@ -10,7 +10,7 @@ Ahreloco::Application.routes.draw do
   match "/signout" => "sessions#destroy", :as => :signout
   resources :users, only: [:show, :index] 
 
-  resources :videos , only: [:new, :create] do
+  resources :videos , only: [:index,:new, :create] do
     new do
        post :upload
        get  :save_video

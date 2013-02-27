@@ -29,7 +29,7 @@
         -@videos.each do |video|
           .video
             %h4
-              = link_to video.title,user_path(video_id: video.id)
+              = link_to video.title, user_path(video_id: video.id)
             %p
               = image_tag(video.thumbnails.first[:url])
 

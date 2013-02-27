@@ -13,4 +13,9 @@ describe Program do
     program.users.first.should be_kind_of(User)
   end
   
+  it 'returns latest video' do  
+    program.users.first.videos.create(attributes_for(:older_video))
+    lattest = program.users.first.videos.create(attributes_for(:video))
+    program.lattest_video.should == lattest 
+  end
 end

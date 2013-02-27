@@ -24,6 +24,11 @@ class VideosController < InheritedResources::Base
     redirect_to user_path(current_user), notice: 'video successfully uploaded'
   end
 
+  protected
+  def collection
+    @videos ||= end_of_association_chain.order('published_at DESC')
+  end
+
   private 
   def options_for(video)
     opts = {title: video.title,
@@ -32,5 +37,6 @@ class VideosController < InheritedResources::Base
             keywords: ['test'],
             private: 'true' }
   end
+
 end
 

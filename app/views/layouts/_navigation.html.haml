@@ -11,11 +11,13 @@
           %a
             = image_tag p.avatar_url
             =  p.name
+            %b.caret
         .channels.hide
-          %li
-            default borrame
-          -p.users do |u|
-            %li.channel= link_to u.username, users_path(u)
+          -p.users.each do |u|
+            %li.channel= link_to u.username, user_path(u)
+  %li.dropdown.programs
+    = link_to 'Videos de la comunidad', videos_path
+
 %ul.nav.pull-right
   %li
     = link_to 'Concursa con tu video', new_video_path
@@ -28,8 +30,8 @@
           = current_user.username
           %b.caret
         %ul.dropdown-menu
-          %li= link_to "My Profile", current_user
-          %li= link_to "Log Out", signout_path
+          %li= link_to "editar mi perfil", current_user
+          %li= link_to "cerrar sesion", signout_path
     -  else
       %li
         = link_to "Loggeate con tu cuenta de youtube", '/auth/youtube'

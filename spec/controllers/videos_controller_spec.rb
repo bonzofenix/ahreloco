@@ -3,11 +3,24 @@ require 'spec_helper'
 describe VideosController do
   let(:user){ create :user }
   let(:video){ create :video } 
+  let(:older_video){ create :video, published_at: Date.today - 1.day }
+  let(:even_older_video){ create :video, published_at: Date.today - 2.day }
+
   let(:save_video_params) do
     { video_id: video.id, status: 200, id: '2rIwQs7C1T4' }
   end
 
   render_views
+
+  describe 'get Index' do
+    it 'should bring videos ordered by published date' do 
+      even_older_video
+      video
+      older_video
+      get :index
+      assigns(:videos).should == [video, older_video, even_older_video]
+    end
+  end
 
   describe 'when user is logged in' do
     before do
