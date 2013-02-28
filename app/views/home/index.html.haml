@@ -4,4 +4,5 @@
       %ul.slides
         -@lattest_program_videos.each do |v|
           %li{"data-thumb" => v.thumbnails.first[:url]}
-            = image_tag(v.thumbnails.first[:url])
+            =link_to user_path(v.user,video_id: v.id) do
+              = image_tag(v.thumbnails.first[:url])

@@ -28,3 +28,17 @@ background-color: #1684c2;
     color: white;
   }
 }
+.nav li.programs.open li.program .caret {
+    margin-top: 22px;
+    border-bottom-color: black;
+    border-top-color: black;
+}
+.youtube-player{
+  z-index:-1;
+}
+.navbar .nav>li>a.image {
+  padding: 10px  15px;
+  b.caret{
+    margin-top: 12px;
+  }
+}
