@@ -4,5 +4,4 @@
       %ul.slides
         -@lattest_program_videos.each do |v|
           %li{"data-thumb" => v.thumbnails.first[:url]}
-            = link_to v.l
             = image_tag(v.thumbnails.first[:url])
