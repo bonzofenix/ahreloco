@@ -1,7 +1,8 @@
 class HomeController < ApplicationController
   def index
-    @lattest_program_videos = Program.all.collect do |p|
-      p.lattest_video
-    end
+    @latest_program_videos = Program.latest_videos
+    @top_today = Video.top_today.limit(10)
+    @top_week = Video.top_week.limit(10)
+    @top_month = Video.top_month.limit(10)
   end
 end

@@ -26,11 +26,9 @@ describe UsersController do
       assigns(:default_video).should == user.videos.last
     end
 
-    it 'accepts params for default video' do
-      video
-      other_video
-      get 'show', id: user.id, video_id: video.id
-      assigns(:default_video).should == video
+    it 'hits the video' do
+      video.should_receive :hit_it! 
+      get :show, id: user.id, video_id: video.id
     end
   end
 end

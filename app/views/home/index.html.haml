@@ -2,7 +2,30 @@
   .span8
     .flexslider
       %ul.slides
-        -@lattest_program_videos.each do |v|
+        -@latest_program_videos.each do |v|
           %li{"data-thumb" => v.thumbnails.first[:url]}
             =link_to user_path(v.user,video_id: v.id) do
               = image_tag(v.thumbnails.first[:url])
+  .span4
+    .most-views
+      %h4
+        Videos mas vistos en ahreloco
+      %ul.nav.nav-pills
+        %li.active
+          %a{"data-toggle" => "pill", :href => "#mv-day"}
+            Hoy
+        %li
+          %a{"data-toggle" => "pill", :href => "#mv-week"}
+            Esta Semana
+        %li
+          %a{"data-toggle" => "pill", :href => "#mv-month"}
+            Este Mes
+      .tab-content
+        #mv-day.tab-pane.active
+          = render 'videos/list', videos: @top_today
+        #mv-week.tab-pane
+          = render 'videos/list', videos: @top_week
+        #mv-month.tab-pane
+          = render 'videos/list', videos: @top_month
+
+

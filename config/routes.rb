@@ -1,13 +1,14 @@
 Ahreloco::Application.routes.draw do
   ActiveAdmin.routes(self)
-
   devise_for :admin_users, ActiveAdmin::Devise.config
-
   get "users/index"
-
   root :to => "home#index"
+
+
   match 'auth/youtube/callback' => 'sessions#create'
+  match 'auth/failure' => 'sessions#failure'
   match "/signout" => "sessions#destroy", :as => :signout
+
   resources :users, only: [:show, :index] 
 
   resources :videos , only: [:index,:new, :create] do

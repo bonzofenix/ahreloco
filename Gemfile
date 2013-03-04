@@ -3,7 +3,8 @@ gem 'rails', '3.2.11'
 gem 'pg'
 gem 'friendly_id'
 gem 'activeadmin'
-
+gem 'spork-rails'
+gem 'whenever', require: false
 gem 'will_paginate-bootstrap'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

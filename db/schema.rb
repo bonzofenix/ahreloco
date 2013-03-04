@@ -84,7 +84,6 @@ ActiveRecord::Schema.define(:version => 20130225024652) do
 
   create_table "videos", :force => true do |t|
     t.string   "video_id"
-    t.string   "player_url"
     t.string   "title"
     t.text     "serialized_thumbnails"
     t.datetime "published_at"
@@ -92,6 +91,10 @@ ActiveRecord::Schema.define(:version => 20130225024652) do
     t.integer  "dislikes",              :default => 0
     t.integer  "rater_count",           :default => 0
     t.integer  "view_count",            :default => 0
+    t.integer  "arl_views_today",       :default => 0
+    t.integer  "arl_views_week",        :default => 0
+    t.integer  "arl_views_month",       :default => 0
+    t.integer  "arl_views",             :default => 0
     t.boolean  "is_complete",           :default => false
     t.integer  "user_id"
     t.datetime "created_at",                               :null => false

@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :programs
   has_many :videos
   attr_accessible :mail, :name, :provider, :uid, :subscribers_count  
+
+
   def add_videos(new_videos)
     new_videos.each do |a_video|
       unless videos.exists? video_id: a_video.unique_id

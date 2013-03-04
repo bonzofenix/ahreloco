@@ -4,11 +4,9 @@ window.pageAttr = (attributeName) ->
   $("body").attr("data-#{attributeName}")
 
 $ ->
-  $('programs').click ->
-    $(this).toggleClass('open')
-
   $('.programs-btn').click ->
-    $(this).parent().addClass('open')
+    $(this).parent().toggleClass('open')
+    $('.programs .channels').hide()
 
   $('.programs').unbind('click')
   $('.program').click ->

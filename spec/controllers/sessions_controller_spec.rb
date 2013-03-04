@@ -38,4 +38,12 @@ describe SessionsController do
       post :create      
     end.to change{User.first.subscribers_count}
   end
+
+  describe '.failure' do
+    it 'flash on failure' do
+      get :failure
+      flash[:error].should_not be_nil
+      response.should redirect_to(root_path)
+    end
+  end
 end
