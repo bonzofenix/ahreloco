@@ -1,7 +1,7 @@
 shared_context 'youtube it mocks' do
 
   let(:youtube_it_comment) do
-    YouTubeIt::Model::Comment.new(author: youtube_it_author)
+    YouTubeIt::Model::Comment.new( author: youtube_it_author, updated: Date.today )
   end
 
   let(:youtube_it_author) do
@@ -31,6 +31,8 @@ shared_context 'youtube it mocks' do
       a << YouTubeIt::Model::Content.new( url:"rtsp://v8.cache2.c.youtube.com/ClcLENy73wIaTglPmNZE_wUOpxMYESARFEIKeW91dHViZV9pdEgGUgx1c2VyX3VwbG9hZHNyIQEH2YzMazprXNXCz-GuhIF8DvPB7EI6RNWvHdRsUJxg5gw=/0/0/0/video.3gp", format: video_format, duration:43, mime_type:"video/3gpp", default: false)
     end
   end
+
+
 
   let(:video_thumbnails) do 
 
@@ -68,6 +70,13 @@ shared_context 'youtube it mocks' do
       state: {:name=>"published"},
       unique_id: "pw4F_0TWmE8")
   #access_control: {"comment"=>"allowed", "commentVote"=>"allowed", "videoRespond"=>"allowed", "rate"=>"allowed", "embed"=>"allowed", "list"=>"allowed", "autoPlay"=>"allowed", "syndicate"=>"allowed"}, widescreen=nil, noembed=false, safe_search=false, position=nil, latitude=nil, longitude=nil, insight_uri="http://insight.youtube.com/video-analytics/csvreports?query=pw4F_0TWmE8&type=v&starttime=1235865600000&endtime=1358812800000&user_starttime=1358208000000&user_endtime=1358812800000&region=world&token=5fPxnkTu-DUAj85JeK3aOAxoY_Z8MTM1ODkwOTU0OEAxMzU4OTA3NzQ4&hl=en_US&devKey=AQfZjMxrOmtc1cLP4a6EgXwO88HsQjpE1a8d1GxQnGDm", perm_private=false>
+  end
+
+  before do
+    YouTubeIt::Client.any_instance.tap do |cli|
+      cli.stub(:add_comment).with(comment.video_id, comment.content)
+      cli.stub(:comments).with(video_id).and_return([youtube_it_comment])
+    end
   end
 
 end

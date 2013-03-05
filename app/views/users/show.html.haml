@@ -27,11 +27,15 @@
     .videos
       - if @videos
         -@videos.each do |video|
-          .video
-            %h4
-              = link_to video.title, user_path(video_id: video.id)
-            %p
+          .video.row-fluid
+            .span4
               = image_tag(video.thumbnails.first[:url])
+            .span8
+              %p
+                = link_to video.title, user_path(video_id: video.id)
+              %p.muted
+                visto
+                = video.view_count
 
 - page_data('video-id' => @default_video.video_id )
 

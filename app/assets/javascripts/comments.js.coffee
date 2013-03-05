@@ -1,10 +1,13 @@
 $ ->
   add_comment = (comment)->
+    debugger
     $('.comments').prepend "<div class='comment'>
       <a href='#{Routes.user_path(comment.username)}'>
       <b>#{comment.username}</b>
       </a>
-      <p>#{comment.content}</p>
+      <p>#{comment.content}
+      <em class='muted'>Hace #{comment.time_ago}</em>
+      </p>
       </div>"
 
   if $('.comments').length

@@ -1,5 +1,8 @@
 
-= link_to "Ahreloco", root_path, class: 'brand'
+%a.brand(href= '/')
+  %i.icon-home.icon-white
+  Ahreloco
+
 %ul.nav
   %li.dropdown.programs
     %a.dropdown-toggle.programs-btn(href="#")
@@ -19,21 +22,31 @@
     = link_to 'Videos de la comunidad', videos_path
 
 %ul.nav.pull-right
-  %li
-    = link_to 'Concursa con tu video', new_video_path
-    - if user_signed_in?
-      %li.divider-vertical
-      %li
-        = link_to current_user, class: 'image' do
-          = image_tag current_user.avatar_url, width: 30, height: 25
-          = current_user.username
-      %li.divider-vertical
-      %li.dropdown
-        %a.dropdown-toggle(href="#" data-toggle="dropdown")
-          %i.icon-cog.icon-white
-        %ul.dropdown-menu
-          %li= link_to "editar mi perfil", current_user
-          %li= link_to "cerrar sesion", signout_path
-    -  else
-      %li
-        = link_to "Loggeate con tu cuenta de youtube", '/auth/youtube'
+  - if user_signed_in?
+    %li
+      = link_to new_video_path do
+        %i.icon-film
+        Concursa con tu video
+    %li.divider-vertical
+    %li
+      = link_to current_user, class: 'image' do
+        = image_tag current_user.avatar_url, width: 30, height: 25
+        = current_user.username
+    %li.divider-vertical
+    %li.dropdown
+      %a.dropdown-toggle(href="#" data-toggle="dropdown")
+        %i.icon-cog.icon-white
+      %ul.dropdown-menu
+        %li
+          = link_to current_user do
+
+            %i.icon-user
+            Editar mi perfil
+        %li
+          = link_to signout_path do
+            %i.icon-off
+            Cerrar sesion
+
+  -  else
+    %li
+      = link_to "Loggeate con tu cuenta de youtube", '/auth/youtube'

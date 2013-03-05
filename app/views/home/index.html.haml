@@ -5,7 +5,7 @@
         -@latest_program_videos.each do |v|
           %li{"data-thumb" => v.thumbnails.first[:url]}
             =link_to user_path(v.user,video_id: v.id) do
-              = image_tag(v.thumbnails.first[:url])
+              = image_tag(v.thumbnails[2][:url])
   .span4
     .most-views
       %h4
@@ -22,10 +22,10 @@
             Este Mes
       .tab-content
         #mv-day.tab-pane.active
-          = render 'videos/list', videos: @top_today
+          = render 'videos/home_list', videos: @top_today
         #mv-week.tab-pane
-          = render 'videos/list', videos: @top_week
+          = render 'videos/home_list', videos: @top_week
         #mv-month.tab-pane
-          = render 'videos/list', videos: @top_month
+          = render 'videos/home_list', videos: @top_month
 
 

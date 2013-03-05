@@ -1,17 +1,2 @@
-.row-fluid.videos
-  - if @videos
-    -@videos.each do |video|
-      .row-fluid.video
-        .span2
-          = image_tag(video.thumbnails.first[:url])
-        .span10
-          %p
-            Canal:
-            = link_to video.user.username, user_path(video.user)
-          %p
-            Titulo:
-            = link_to video.title, user_path(video.user, video_id: video.id)
-          %p
-            Cantidad de vistas:
-            = video.view_count
+= render 'videos/list',videos: @videos if @videos
 = will_paginate @videos, :renderer => BootstrapPagination::Rails

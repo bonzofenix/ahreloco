@@ -5,8 +5,8 @@ class CreateComments < ActiveRecord::Migration
       t.string :comment_id
       t.string :content
       t.string :reply_to
-      t.references :user
-
+      t.string :username
+      t.datetime :updated
       t.timestamps
     end
   end

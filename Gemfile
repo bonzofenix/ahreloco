@@ -6,6 +6,8 @@ gem 'activeadmin'
 gem 'spork-rails'
 gem 'whenever', require: false
 gem 'will_paginate-bootstrap'
+gem 'exception_notification', :require => 'exception_notifier'
+
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'

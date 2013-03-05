@@ -32,6 +32,9 @@ Ahreloco::Application.configure do
   }
 
 
+  config.i18n.load_path += Dir[Rails.root.join('config','locales', '*.{rb,yml}').to_s]
+  config.i18n.default_locale = :es
+  config.i18n.locale = :es
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
