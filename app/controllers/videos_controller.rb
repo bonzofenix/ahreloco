@@ -37,6 +37,5 @@ class VideosController < InheritedResources::Base
             keywords: ['test'],
             private: 'true' }
   end
-
 end
 

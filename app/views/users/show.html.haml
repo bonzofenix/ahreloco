@@ -1,9 +1,9 @@
 %h2= @default_video.title
 .row
   .span8
-    %iframe.youtube-player{frameborder: "0", height: "385",
-      src: "http://www.youtube.com/embed/#{@default_video.video_id}",
-      type: "text/html", width: "640"}
+    %object{:height => "385", :width => "640"}
+      %param{:name => "movie", :value => "http://www.youtube.com/v/#{@default_video.video_id}&autoplay=1"}/
+      %embed{:height => "385", :src => "http://www.youtube.com/v/#{@default_video.video_id}&autoplay=1", :type => "application/x-shockwave-flash", :width => "640"}
     - if current_user
       = render 'comments/new',video_id: @default_video.video_id
     = render 'comments/list'
