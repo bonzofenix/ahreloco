@@ -28,7 +28,7 @@ class Video < ActiveRecord::Base
       view_count: video.view_count,
       video_id: video.unique_id,
       thumbnails: get_thumbnails_from(video),
-      title: video.title
+      title: video.title,
       playlist_id: playlist_id
     }
     if video.rating
