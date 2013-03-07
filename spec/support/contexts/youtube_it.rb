@@ -74,8 +74,8 @@ shared_context 'youtube it mocks' do
 
   before do
     YouTubeIt::Client.any_instance.tap do |cli|
-      cli.stub(:add_comment).with(comment.video_id, comment.content)
-      cli.stub(:comments).with(video_id).and_return([youtube_it_comment])
+      cli.stub(:add_comment)
+      cli.stub(:comments).and_return([youtube_it_comment])
     end
   end
 

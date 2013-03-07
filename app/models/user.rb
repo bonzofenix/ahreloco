@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 
   def add_videos(new_videos)
     new_videos.each do |a_video|
-      unless videos.exists? video_id: a_video.unique_id
+      unless videos.exists? video_id: a_video.unique_id or a_video.published_at.nil?
         videos.create! do |v|
           v.published_at = a_video.published_at
           v.view_count = a_video.view_count

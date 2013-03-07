@@ -11,6 +11,12 @@ describe User do
       end.to change{Video.count}
     end
 
+    it 'ignnores a video if published_ar = nil' do
+      youtube_it_video.stub(:published_at)
+      expect do
+        user.add_videos([youtube_it_video])
+      end.not_to change{Video.count}
+    end
 
     describe 'parsing video' do
       before{ user.add_videos([youtube_it_video]) }
