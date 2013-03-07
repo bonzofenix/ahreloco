@@ -21,14 +21,15 @@ class Video < ActiveRecord::Base
     update_attributes( arl_views_today: arl_views_today + 1,
       arl_views_week: arl_views_week + 1, arl_views_month: arl_views_month + 1)
   end
-  
-  def self.parsed_attributes(video)
+  # to check: playlist id included in the video? 
+  def self.parsed_attributes(video, playlist_id=nil)
     pa = {
       published_at: video.published_at,
       view_count: video.view_count,
       video_id: video.unique_id,
       thumbnails: get_thumbnails_from(video),
       title: video.title
+      playlist_id: playlist_id
     }
     if video.rating
       pa.merge({

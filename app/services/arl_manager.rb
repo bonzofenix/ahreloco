@@ -25,7 +25,7 @@ class ArlManager
 
   
   def scroll_playlist_videos
-    arl_user.add_videos(playlist.videos)
+    arl_user.add_videos(playlist.videos, playlist.playlist_id)
   end
   
   def arl_user
