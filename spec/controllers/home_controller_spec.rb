@@ -18,6 +18,10 @@ describe HomeController do
         assigns(:top_taday).should_not be_nil
       end
 
+      it 'assings top today' do
+        assigns(:week_conquest).should_not be_nil
+      end
+
       it 'assings top week' do
         assigns(:top_week).should_not be_nil
       end

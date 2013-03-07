@@ -46,6 +46,20 @@ shared_context 'youtube it mocks' do
     end
   end
 
+  let(:youtube_it_playlist) do
+    YouTubeIt::Model::Playlist.new( title: 'concurso semana 5 del 2013',
+      playlist_id: '2', published: '2013-01-26T20:32:19.000Z' )
+  end
+
+  let(:youtube_it_playlists) do
+    [].tap do |a|
+      a << YouTubeIt::Model::Playlist.new( title: 'concurso semana 5 del 2013',
+        playlist_id: '2', published: '2013-01-26T20:32:19.000Z' )
+      a << YouTubeIt::Model::Playlist.new( title: 'concurso semana 4 del 2013', 
+        playlist_id: '1', published: '2013-02-03T20:32:19.000Z' )
+    end
+  end
+
   let(:youtube_it_video) do
     YouTubeIt::Model::Video.new(
       video_id: 'tag:youtube.com,2008:video:pw4F_0TWmE8',
@@ -57,7 +71,7 @@ shared_context 'youtube it mocks' do
       keywords: ["moran", "mayumoran"], 
       title: "mayumoran impro moran",
       html_content: nil,
-      author: user,
+      author: youtube_it_author,
       description: "asdasdasd", 
       duration: 43, 
       media_content: video_media_content,
@@ -75,7 +89,9 @@ shared_context 'youtube it mocks' do
   before do
     YouTubeIt::Client.any_instance.tap do |cli|
       cli.stub(:add_comment)
-      cli.stub(:comments).and_return([youtube_it_comment])
+      cli.stub(:comments).and_return( [youtube_it_comment] )
+      cli.stub( playlists: youtube_it_playlists )
+      cli.stub( playlist: stub( videos: [youtube_it_video] ))
     end
   end
 

@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Video do
   let(:video){ create :video } 
+  include_context 'youtube it mocks'
 
   describe 'when serializing images' do
     it 'sets thbnails serialized' do
@@ -26,7 +27,47 @@ describe Video do
       Video.should respond_to(:top_today)
     end
   end
-  
+
+  describe '.parsed_attributes' do
+    subject{ Video.parsed_attributes(youtube_it_video) }
+
+    it 'pars3s published_at' do
+      subject[:published_at].should == "2007-10-10 01:23:33 UTC" 
+    end
+
+    it 'pars3s published_at' do
+      subject[:playlist_id].should == nil
+    end
+
+    it 'parses view_count' do
+      subject[:view_count].should ==  64
+    end
+
+    it 'parses video_id' do
+      subject[:video_id].should == "pw4F_0TWmE8" 
+    end
+
+    it 'parses thumbnails' do
+      subject[:thumbnails].should be_kind_of(Array)
+    end
+
+    it 'parses title' do
+      subject[:title].should == "mayumoran impro moran"
+    end
+
+    it 'parses likes' do
+      subject[:likes].should == nil
+    end
+
+    it 'parses dislikes' do
+      subject[:dislikes].should ==  nil
+    end
+
+    it 'parses rater_count' do
+      subject[:rater_count].should ==  nil
+    end
+  end
+
   describe 'hit_it!' do
     it 'hits the views of the day' do
       video

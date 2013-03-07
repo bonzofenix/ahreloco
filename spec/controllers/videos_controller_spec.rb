@@ -10,7 +10,6 @@ describe VideosController do
     { video_id: video.id, status: 200, id: '2rIwQs7C1T4' }
   end
 
-  render_views
 
   describe 'get Index' do
     it 'should bring videos ordered by published date' do 

@@ -1,15 +1,16 @@
-.row-fluid.videos
-  -videos.each do |video|
-    .row-fluid.video
-      .span2
-        = image_tag(video.thumbnails.first[:url])
-      .span10
-        %p
-          %h4
-            = link_to video.title, user_path(video.user, video_id: video.id)
-          %em.muted
-            de
-            = link_to video.user.username, user_path(video.user)
-        %h5
-          vistas:
-          = video.view_count
+- if @videos
+  .row-fluid.videos
+    -videos.each do |video|
+      .row-fluid.video
+        .span2
+          = image_tag(video.thumbnails.first[:url])
+        .span10
+          %p
+            %h4
+              = link_to video.title, user_path(video.user, video_id: video.id)
+            %em.muted
+              de
+              = link_to video.user.username, user_path(video.user)
+          %h5
+            vistas:
+            = video.view_count

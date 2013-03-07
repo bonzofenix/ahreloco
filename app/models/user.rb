@@ -9,32 +9,10 @@ class User < ActiveRecord::Base
   def add_videos(new_videos)
     new_videos.each do |a_video|
       unless videos.exists? video_id: a_video.unique_id or a_video.published_at.nil?
-        videos.create! do |v|
-          v.published_at = a_video.published_at
-          v.view_count = a_video.view_count
-          v.video_id = a_video.unique_id 
-          v.thumbnails = get_thumbnails_from(a_video)
-          v.title = a_video.title
-          if a_video.rating
-            v.likes = a_video.rating.likes
-            v.dislikes = a_video.rating.dislikes
-            v.rater_count = a_video.rating.rater_count
-          end
-        end
+        videos.create!(Video.parsed_attributes(a_video))
       end
     end
   end
-
-  def get_thumbnails_from(video)
-    video.thumbnails.collect do |thumbnail|
-      {}.tap do |h|
-        h[:url] = thumbnail.url
-        h[:height] = thumbnail.height
-        h[:width] = thumbnail.width
-      end
-    end
-  end
-    
 
   def likes
     videos.sum('likes')

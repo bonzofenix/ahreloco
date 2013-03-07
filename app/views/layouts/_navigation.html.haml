@@ -23,10 +23,16 @@
 
 %ul.nav.pull-right
   - if user_signed_in?
-    %li
-      = link_to new_video_path do
-        %i.icon-film
-        Concursa con tu video
+    %li.dropdown
+      %a.dropdown-toggle(href="#" data-toggle="dropdown")
+        %i.icon-film.icon-white
+        Concurso de la semana!
+        %b.caret
+      %ul.dropdown-menu
+        %li
+          = link_to new_video_path do
+            Subi tu video
+
     %li.divider-vertical
     %li
       = link_to current_user, class: 'image' do
@@ -39,7 +45,6 @@
       %ul.dropdown-menu
         %li
           = link_to current_user do
-
             %i.icon-user
             Editar mi perfil
         %li

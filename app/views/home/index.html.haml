@@ -6,6 +6,10 @@
           %li{"data-thumb" => v.thumbnails.first[:url]}
             =link_to user_path(v.user,video_id: v.id) do
               = image_tag(v.thumbnails[2][:url])
+    .week-conquest
+      %h4
+        Videos del concurso de la semana
+      =render 'videos/list', videos: @week_conquest
   .span4
     .most-views
       %h4
@@ -27,5 +31,7 @@
           = render 'videos/home_list', videos: @top_week
         #mv-month.tab-pane
           = render 'videos/home_list', videos: @top_month
+
+
 
 

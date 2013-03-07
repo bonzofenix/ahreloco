@@ -27,7 +27,7 @@ describe UsersController do
     end
 
     it 'hits the video' do
-      video.should_receive :hit_it! 
+      Video.any_instance.should_receive :hit_it! 
       get :show, id: user.id, video_id: video.id
     end
   end

@@ -11,9 +11,15 @@ describe CommentsController do
       response.should be_ok
     end
   
-    it 'it returns a list of comments' do
-      xhr :get, :index, video_id: video_id
-      assigns(:comments).first.should be_kind_of(Comment)
+    describe 'returns a hash with the needed keys' do
+      before { xhr :get, :index, video_id: video_id }
+
+      subject{ assigns(:comments).first }
+
+      it{ should have_key(:username) }
+      it{ should have_key(:content) }
+      it{ should have_key(:time_ago) }
+
     end
   end
 
