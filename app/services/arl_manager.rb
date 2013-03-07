@@ -33,6 +33,7 @@ class ArlManager
   end
 
   private   
+
   def playlist
     find_or_create_playlist
   end

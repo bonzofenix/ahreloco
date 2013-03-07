@@ -6,10 +6,12 @@ class User < ActiveRecord::Base
   attr_accessible :mail, :name, :provider, :uid, :subscribers_count  
 
 
-  def add_videos(new_videos)
+  def add_videos(new_videos, playlist_id = nil)
     new_videos.each do |a_video|
       unless videos.exists? video_id: a_video.unique_id or a_video.published_at.nil?
-        videos.create!(Video.parsed_attributes(a_video))
+        params = Video.parsed_attributes(a_video)
+        params.merge!({ playlist_id: playlist_id }) if playlist_id
+        videos.create!(params)
       end
     end
   end
