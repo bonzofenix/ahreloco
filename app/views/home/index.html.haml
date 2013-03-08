@@ -3,9 +3,15 @@
     .flexslider
       %ul.slides
         -@latest_program_videos.each do |v|
-          %li{"data-thumb" => v.thumbnails.first[:url]}
+          %li{"data-thumb" => v.small_thumb}
             =link_to user_path(v.user,video_id: v.id) do
-              = image_tag(v.thumbnails[2][:url])
+              = image_tag(v.big_thumb)
+              .well.slide-user-info
+                %h4
+                  =link_to v.title, user_path(v.user,video_id: v.id)
+                  %em.muted
+                    de
+                    = link_to v.user.username, user_path(v.user)
     .week-conquest
       %h4
         Videos del concurso de la semana

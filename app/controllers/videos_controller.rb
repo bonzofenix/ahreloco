@@ -1,6 +1,8 @@
 class VideosController < InheritedResources::Base
   def upload
-    @video = Video.create(params[:video])
+    @video = Video.create(params[:video].merge({playlist_id: arl_manager.playlist_id,
+      user_id: current_user.id }))
+   
     if @video
       @upload_info = arl_manager.client.upload_token(options_for(@video),
        save_video_new_video_url(video_id: @video.id))

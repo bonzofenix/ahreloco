@@ -11,7 +11,7 @@ class ArlManager
   end
   
   def add_video_to_week_playlist(video)
-    client.add_video_to_playlist(playlist.playlist_id, video.video_id)
+    client.add_video_to_playlist(playlist_id, video.video_id)
   end
 
   def check_new_videos_for(user)
@@ -20,16 +20,11 @@ class ArlManager
   end
 
   def week_videos
-    Video.where("playlist_id = '#{playlist.playlist_id}'").all.shuffle
+    Video.where("playlist_id = '#{playlist_id}'").all.shuffle
   end
 
-  
-  def scroll_playlist_videos
-    arl_user.add_videos(playlist.videos, playlist.playlist_id)
-  end
-  
-  def arl_user
-    User.find_by_username( ENV['ARL_USERNAME'] )
+  def playlist_id
+    playlist.playlist_id
   end
 
   private   

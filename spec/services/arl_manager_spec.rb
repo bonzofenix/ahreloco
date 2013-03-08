@@ -4,15 +4,7 @@ describe ArlManager do
   let(:user){ create :user }
   let(:video){ create :video }
   let(:manager){ ArlManager.new }
-
   include_context 'youtube it mocks'
-
-  it 'scroll weeks video' do
-    manager.stub(arl_user: user)
-    expect do
-      manager.scroll_playlist_videos 
-    end.to change{Video.count}
-  end
 
   it 'returns a youtube client' do
     manager.client.should be_kind_of(YouTubeIt::Client)

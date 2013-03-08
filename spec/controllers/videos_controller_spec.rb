@@ -34,12 +34,22 @@ describe VideosController do
     describe 'when uploading a video' do
       it 'creates the video' do
         expect do
-          post :upload, video: attributes_for(:video)
+          post :upload, video: attributes_for(:video) 
         end.to change{ Video.count }
+      end
+
+      describe 'created video' do
+        before{ post :upload, video: attributes_for(:video) }
+        subject{ assigns :video }  
+        
+        its(:playlist_id){ should_not be_nil }
+        its(:user){ should_not be_nil }
+
       end
       
       it 'looks for the upload token' do
-        YouTubeIt::Client.any_instance.should_receive(:upload_token).and_return({url:'', token:''})
+        YouTubeIt::Client.any_instance.should_receive(:upload_token)
+          .and_return({url:'', token:''})
         post :upload, video: attributes_for(:video)
       end
     end
@@ -50,6 +60,7 @@ describe VideosController do
           get :save_video, save_video_params
         end.to change{ video.reload.video_id }
       end
+
 
       it 'sets as completed' do
         expect do

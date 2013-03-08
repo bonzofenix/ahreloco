@@ -31,6 +31,7 @@
       %ul.dropdown-menu
         %li
           = link_to new_video_path do
+            %i.icon-upload
             Subi tu video
 
     %li.divider-vertical
@@ -44,9 +45,9 @@
         %i.icon-cog.icon-white
       %ul.dropdown-menu
         %li
-          = link_to current_user do
-            %i.icon-user
-            Editar mi perfil
+        /  = link_to current_user do
+        /    %i.icon-user
+        /    Editar mi perfil
         %li
           = link_to signout_path do
             %i.icon-off

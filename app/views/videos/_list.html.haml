@@ -1,9 +1,9 @@
-- if @videos
+- if videos
   .row-fluid.videos
     -videos.each do |video|
       .row-fluid.video
         .span2
-          = image_tag(video.thumbnails.first[:url])
+          = image_tag(video.thumbnails.first[:url]) if video.thumbnails
         .span10
           %p
             %h4
