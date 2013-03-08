@@ -27,6 +27,7 @@ class User < ActiveRecord::Base
   def update_youtube_attributes(auth)
     update_attributes!( subscribers_count: auth['info']['subscribers_count'])
   end
+
   class << self
     def find_for_youtube(auth)
        user = User.find_by_provider_and_uid(auth["provider"], auth["uid"])

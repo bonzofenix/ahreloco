@@ -4,18 +4,6 @@ describe Video do
   let(:video){ create :video } 
   include_context 'youtube it mocks'
 
-  describe 'when serializing images' do
-    it 'sets thbnails serialized' do
-      video.thumbnails = [{url: 'asd', height: 90, width:10}] 
-      video.serialized_thumbnails.should == "---\n- :url: asd\n  :height: 90\n  :width: 10\n" 
-    end
-
-    it 'returns them unserialized' do
-      video.serialized_thumbnails = "---\n- :url: asd\n  :height: 90\n  :width: 10\n" 
-      video.thumbnails.should == [{url: 'asd', height: 90, width:10}]
-    end
-  end
-  
   describe '.top_today'  do
     it 'responds to method' do
       Video.should respond_to(:top_today)
@@ -45,10 +33,6 @@ describe Video do
 
     it 'parses video_id' do
       subject[:video_id].should == "pw4F_0TWmE8" 
-    end
-
-    it 'parses thumbnails' do
-      subject[:thumbnails].should be_kind_of(Array)
     end
 
     it 'parses title' do

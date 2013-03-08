@@ -5,27 +5,24 @@ class Video < ActiveRecord::Base
   scope :top_month, order('arl_views_month DESC')
   scope :latest_published, order('published_at DESC')
 
-  attr_accessible :video_id, :title, :thumbnails, :is_complete, :likes, :dislikes, :playlist_id,
+  attr_accessible :video_id, :title, :is_complete, :likes, :dislikes, :playlist_id,
     :rater_count, :published_at, :arl_views_today, :arl_views_week, :arl_views_month,:view_count,
     :user_id
 
-  def thumbnails=(args)
-    self.serialized_thumbnails = YAML::dump(args)
-    @thumbnails = args
+  
+  def update_with(video)
+    params = self.class.parsed_attributes(video)
+    update_attributes(params)
   end
 
-  
   def small_thumb
-    return thumbnails.first[:url] if thumbnails
+    "http://i2.ytimg.com/vi/#{video_id}/mqdefault.jpg"
   end
 
   def big_thumb
-    return thumbnails[2][:url] if thumbnails
+    "http://i2.ytimg.com/vi/#{video_id}/hqdefault.jpg"
   end
     
-  def thumbnails
-    @thumbnails ||= YAML::load(self.serialized_thumbnails) if serialized_thumbnails
-  end
   def hit_it!
     update_attributes( arl_views_today: arl_views_today + 1,
       arl_views_week: arl_views_week + 1, arl_views_month: arl_views_month + 1)
@@ -37,7 +34,6 @@ class Video < ActiveRecord::Base
       published_at: video.published_at,
       view_count: video.view_count,
       video_id: video.unique_id,
-      thumbnails: get_thumbnails_from(video),
       title: video.title
     }
     if video.rating
@@ -49,16 +45,4 @@ class Video < ActiveRecord::Base
     end
     pa
   end
-
-  def self.get_thumbnails_from(video)
-    video.thumbnails.collect do |thumbnail|
-      {}.tap do |h|
-        h[:url] = thumbnail.url
-        h[:height] = thumbnail.height
-        h[:width] = thumbnail.width
-      end
-    end
-  end
-    
-
 end

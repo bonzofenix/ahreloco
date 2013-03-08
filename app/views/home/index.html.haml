@@ -1,5 +1,7 @@
 .row
   .span8
+    %h4
+      Videos de los programas
     .flexslider
       %ul.slides
         -@latest_program_videos.each do |v|
@@ -12,14 +14,22 @@
                   %em.muted
                     de
                     = link_to v.user.username, user_path(v.user)
+  .span4
+    .news
+      %h4
+        Noticias
+      - Alert.all.each do |a|
+        .alert.alert-success
+          =raw a.text
     .week-conquest
       %h4
-        Videos del concurso de la semana
-      =render 'videos/list', videos: @week_conquest
-  .span4
-    .most-views
+        Concurso de la semana!
+      =render 'videos/conquest_list', videos: @week_conquest
+.row
+  .span6
+    .most-views.comunity
       %h4
-        Videos mas vistos en ahreloco
+        Videos mas vistos (Comunidad)
       %ul.nav.nav-pills
         %li.active
           %a{"data-toggle" => "pill", :href => "#mv-day"}
@@ -37,7 +47,27 @@
           = render 'videos/home_list', videos: @top_week
         #mv-month.tab-pane
           = render 'videos/home_list', videos: @top_month
-
+  .span6
+    .most-views.programs
+      %h4
+        Videos mas vistos (Programas)
+      %ul.nav.nav-pills
+        %li.active
+          %a{"data-toggle" => "pill", :href => "#mv-day"}
+            Hoy
+        %li
+          %a{"data-toggle" => "pill", :href => "#mv-week"}
+            Esta Semana
+        %li
+          %a{"data-toggle" => "pill", :href => "#mv-month"}
+            Este Mes
+      .tab-content
+        #mv-day.tab-pane.active
+          = render 'videos/home_list', videos: @top_today
+        #mv-week.tab-pane
+          = render 'videos/home_list', videos: @top_week
+        #mv-month.tab-pane
+          = render 'videos/home_list', videos: @top_month
 
 
 

@@ -6,4 +6,4 @@
   = hidden_field_tag :token, @upload_info[:token]
   = label_tag :file
   = file_field_tag :file
-  = submit_tag 'Subir video', class: 'btn'
+  = submit_tag 'Subir video', class: 'btn',disable_with: 'Subiendo...'

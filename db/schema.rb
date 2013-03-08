@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130307183935) do
+ActiveRecord::Schema.define(:version => 20130308231533) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -45,6 +45,13 @@ ActiveRecord::Schema.define(:version => 20130307183935) do
 
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
+
+  create_table "alerts", :force => true do |t|
+    t.string   "text"
+    t.boolean  "active"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "comments", :force => true do |t|
     t.string   "video_id"
@@ -86,20 +93,19 @@ ActiveRecord::Schema.define(:version => 20130307183935) do
   create_table "videos", :force => true do |t|
     t.string   "video_id"
     t.string   "title"
-    t.text     "serialized_thumbnails"
     t.datetime "published_at"
-    t.integer  "likes",                 :default => 0
-    t.integer  "dislikes",              :default => 0
-    t.integer  "rater_count",           :default => 0
-    t.integer  "view_count",            :default => 0
-    t.integer  "arl_views_today",       :default => 0
-    t.integer  "arl_views_week",        :default => 0
-    t.integer  "arl_views_month",       :default => 0
-    t.integer  "arl_views",             :default => 0
-    t.boolean  "is_complete",           :default => false
+    t.integer  "likes",           :default => 0
+    t.integer  "dislikes",        :default => 0
+    t.integer  "rater_count",     :default => 0
+    t.integer  "view_count",      :default => 0
+    t.integer  "arl_views_today", :default => 0
+    t.integer  "arl_views_week",  :default => 0
+    t.integer  "arl_views_month", :default => 0
+    t.integer  "arl_views",       :default => 0
+    t.boolean  "is_complete",     :default => false
     t.integer  "user_id"
-    t.datetime "created_at",                               :null => false
-    t.datetime "updated_at",                               :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
     t.string   "playlist_id"
   end
 
