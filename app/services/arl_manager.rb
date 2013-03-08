@@ -27,15 +27,14 @@ class ArlManager
     playlist.playlist_id
   end
 
-  private   
-
-  def playlist
-    find_or_create_playlist
+  def find_week_playlist
+    debugger
+    all_playlists = @client.playlists.select{ |p| p.title == playlist_name }
+    @playlist = all_playlists.first if all_playlists
   end
 
-  def find_or_create_playlist
-    playlist = @client.playlists.select{ |p| p.title == playlist_name }
-    playlist = playlist.first if playlist
-    playlist ||= client.add_playlist(title: playlist_name)
+  def playlist
+    return @playlist if @playlist
+    @playlist = find_week_playlist || client.add_playlist(title: playlist_name)
   end
 end

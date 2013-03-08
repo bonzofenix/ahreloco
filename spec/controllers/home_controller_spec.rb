@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe HomeController do
+  include_context 'youtube it mocks'
 
   describe '.index' do
     it 'returns http success' do

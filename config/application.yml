@@ -7,15 +7,23 @@
 # makes 'Your_Gmail_Username' available as ENV["GMAIL_USERNAME"]
 # Add application configuration variables here, as shown below.
 #
-GMAIL_USERNAME: Your_Username
-GMAIL_PASSWORD: Your_Password
 ADMIN_NAME: First User
 ADMIN_EMAIL: user@example.com
 ADMIN_PASSWORD: changeme
-YOUTUBE_KEY: 386280001887.apps.googleusercontent.com
-YOUTUBE_SECRET: J78vO9RxAQofeL9c69C1xnNo
 DEV_KEY: AI39si6blYtp-igyIObB2nHtsTrw8yx9nL6ZmPxi5-STrz30-letzq2QYrk-QbvcYA0sRrlNG7wBZJGgdoau5HjplCi2IAGkBg
-ARL_USERNAME: bonzofenix
-ARL_PASSWORD: malena05
-GMAIL_USERNAME: bonzofenix
-GMAIL_PASSWORD: malena05
+
+development:
+  YOUTUBE_KEY: 386280001887-4c9b20mf3oe9fpa82d11c5obe96nt5fs.apps.googleusercontent.com
+  YOUTUBE_SECRET: gqpr4Hwlwoimsla8ciIIxIvq
+  ARL_USERNAME: bonzofenix
+  ARL_PASSWORD: malena05
+  GMAIL_USERNAME: bonzofenix
+  GMAIL_PASSWORD: malena05
+
+production:
+  YOUTUBE_KEY: 386280001887.apps.googleusercontent.com
+  YOUTUBE_SECRET: J78vO9RxAQofeL9c69C1xnNo
+  ARL_USERNAME: bonzofenix
+  ARL_PASSWORD: malena05
+  GMAIL_USERNAME: bonzofenix
+  GMAIL_PASSWORD: malena05

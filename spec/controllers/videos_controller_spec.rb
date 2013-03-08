@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe VideosController do
+  include_context 'youtube it mocks'
   let(:user){ create :user }
   let(:video){ create :video } 
   let(:older_video){ create :video, published_at: Date.today - 1.day }

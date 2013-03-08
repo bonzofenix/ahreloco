@@ -47,14 +47,13 @@ shared_context 'youtube it mocks' do
   end
 
   let(:youtube_it_playlist) do
-    YouTubeIt::Model::Playlist.new( title: 'concurso semana 5 del 2013',
+    YouTubeIt::Model::Playlist.new( title: ArlManager.new.playlist_name,
       playlist_id: '2', published: '2013-01-26T20:32:19.000Z' )
   end
 
   let(:youtube_it_playlists) do
     [].tap do |a|
-      a << YouTubeIt::Model::Playlist.new( title: 'concurso semana 5 del 2013',
-        playlist_id: '2', published: '2013-01-26T20:32:19.000Z' )
+      a << youtube_it_playlist
       a << YouTubeIt::Model::Playlist.new( title: 'concurso semana 4 del 2013', 
         playlist_id: '1', published: '2013-02-03T20:32:19.000Z' )
     end
@@ -89,12 +88,17 @@ shared_context 'youtube it mocks' do
   before do
     YouTubeIt::Client.any_instance.tap do |cli|
       cli.stub(:add_comment)
+      cli.stub(:upload_token)
+      cli.stub(:add_video_to_playlist)
+      cli.stub(:add_playlist).and_return(youtube_it_playlist)
       cli.stub(:comments).and_return( [youtube_it_comment] )
-      cli.stub( playlists: youtube_it_playlists )
+      cli.stub(:playlists).and_return( youtube_it_playlists )
       cli.stub( playlist: stub( videos: [youtube_it_video] ))
     end
+    YouTubeIt::Model::Playlist.any_instance.tap do |ply|
+      ply.stub(:playlist_id)
+    end
   end
-
 end
 
 
