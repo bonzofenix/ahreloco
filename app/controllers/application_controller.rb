@@ -12,10 +12,11 @@ class ApplicationController < ActionController::Base
 
   def client
     token = session[:yt_token]
-    @client ||= YouTubeIt::OAuth2Client.new(client_access_token: token,
-      client_refresh_token: token, 
-      client_id: ENV['YOUTUBE_KEY'], client_secret: ENV['YOUTUBE_SECRET'],
-      dev_key: ENV['DEV_KEY'], expires_at: Time.now + 50.minutes)
+    @client ||= YouTubeIt::AuthSubClient.new(token: token, dev_key: ENV['DEV_KEY'])
+    #@client ||= YouTubeIt::OAuth2Client.new(client_access_token: token,
+    #  client_refresh_token: token, 
+    #  client_id: ENV['YOUTUBE_KEY'], client_secret: ENV['YOUTUBE_SECRET'],
+    #  dev_key: ENV['DEV_KEY'], expires_at: Time.now + 50.minutes)
   end
   
   def arl_manager
