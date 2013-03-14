@@ -1,12 +1,18 @@
 class SessionsController < ApplicationController
+  skip_before_filter :authenticate_user!
+
   def create
-    auth = request.env["omniauth.auth"]
-    @user = User.find_for_youtube(auth)
-    @user.update_youtube_attributes(auth)
-    session[:user_id] = @user.id
-    session[:username] = @user.username
-    session[:yt_token] = auth['credentials']['token']
-    redirect_to user_path(@user), :notice => "Signed in!"
+    auth = OmniauthParser.parse(request.env["omniauth.auth"])
+    if ENV['BETA'] == 'true' and !BetaUser.can_login?(auth.username)
+      redirect_to(root_path, notice: 'usted no ha sido invitado aun a formar parte de ahreloco')
+    else 
+      @user = User.find_for_youtube(auth)
+      @user.update_youtube_attributes(auth)
+      session[:user_id] = @user.id
+      session[:username] = @user.username
+      session[:yt_token] = auth.token
+      redirect_to user_path(@user), notice: 'Bienvenido'
+    end
   end
   
   def failure
@@ -16,6 +22,6 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    redirect_to root_url, :notice => "Signed out!"
+    redirect_to home_path, notice: 'cerraste sesion'
   end
 end

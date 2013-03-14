@@ -25,22 +25,22 @@ class User < ActiveRecord::Base
   end
 
   def update_youtube_attributes(auth)
-    update_attributes!( subscribers_count: auth['info']['subscribers_count'])
+    update_attributes!( subscribers_count: auth.subscribers_count)
   end
 
   class << self
     def find_for_youtube(auth)
-       user = User.find_by_provider_and_uid(auth["provider"], auth["uid"])
+       user = User.find_by_provider_and_uid(auth.provider, auth.uid)
        user ||= User.create_with_omniauth(auth)
     end
 
     def create_with_omniauth(auth)
       create! do |user|
-        user.provider = auth['provider']
-        user.uid = auth['uid']
-        user.avatar_url = auth['info']['image']
-        user.subscribers_count = auth['info']['subscribers_count']
-        user.username = auth.extra.user_hash.send('yt$username').send('$t')
+        user.provider = auth.provider
+        user.uid = auth.uid
+        user.avatar_url = auth.avatar_url
+        user.subscribers_count = auth.subscribers_count
+        user.username = auth.username
       end
     end
   end

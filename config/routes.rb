@@ -2,7 +2,7 @@ Ahreloco::Application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :admin_users, ActiveAdmin::Devise.config
   get "users/index"
-  root :to => "home#index"
+  root :to => "beta_users#new"
 
 
   match 'auth/youtube/callback' => 'sessions#create'
@@ -11,6 +11,9 @@ Ahreloco::Application.routes.draw do
 
   resources :users, only: [:show, :index] 
 
+  resources :beta_users, only: [:new, :create, :show] 
+
+  resource :home, only: [:index]
   resources :videos , only: [:index,:new, :create] do
     new do
        post :upload

@@ -6,8 +6,9 @@
 # GMAIL_USERNAME: Your_Gmail_Username
 # makes 'Your_Gmail_Username' available as ENV["GMAIL_USERNAME"]
 # Add application configuration variables here, as shown below.
-#
+
 ADMIN_NAME: First User
+BETA: true
 ADMIN_EMAIL: user@example.com
 ADMIN_PASSWORD: changeme
 DEV_KEY: AI39si6blYtp-igyIObB2nHtsTrw8yx9nL6ZmPxi5-STrz30-letzq2QYrk-QbvcYA0sRrlNG7wBZJGgdoau5HjplCi2IAGkBg

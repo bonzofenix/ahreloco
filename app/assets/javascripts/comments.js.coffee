@@ -1,6 +1,5 @@
 $ ->
   add_comment = (comment)->
-    debugger
     $('.comments').prepend "<div class='comment'>
       <a href='#{Routes.user_path(comment.username)}'>
       <b>#{comment.username}</b>
