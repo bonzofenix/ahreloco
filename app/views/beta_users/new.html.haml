@@ -1,0 +1,16 @@
+
+%h2
+  Bienvenido a la nueva red social de youtube!
+%h4
+  En esta red social podras compartir tus videos y hacerte conocido en youtube!
+%hr
+  %h2
+    solicita aceso a la red social!!!
+    = form_for @beta_user, class: 'form-horizontal' do |f|
+      .control-group
+        = f.label :username , 'Tu canal de youtube', class: 'control-label'
+        .controls
+          = f.text_field :username, placeholder: 'http://www.youtube.com/user/tucanal',
+            class: 'input-xlarge'
+      .form-actions
+        = f.submit 'QUIERO FORMAR PARTE DE LA COMUNIDAD DE AHRELOCO!',class: 'btn btn-success'
