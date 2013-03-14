@@ -22,6 +22,6 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    redirect_to home_path, notice: 'cerraste sesion'
+    redirect_to home_index_path, notice: 'cerraste sesion'
   end
 end
