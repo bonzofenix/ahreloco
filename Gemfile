@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 gem 'rails', '3.2.11'
 gem 'pg'
 gem 'friendly_id'
@@ -9,6 +9,7 @@ gem 'will_paginate-bootstrap'
 gem 'exception_notification', :require => 'exception_notifier'
 
 group :assets do
+  gem 'therubyracer'
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
@@ -45,3 +46,5 @@ group :development, :test do
   gem "rspec-rails", ">= 2.12.2"
   gem "factory_girl_rails", ">= 4.1.0"
 end
+gem 'rubber'
+gem 'open4'
