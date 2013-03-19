@@ -1,4 +1,6 @@
 class HomeController < ApplicationController
+  skip_before_filter :authenticate_user!, only: :index 
+
   def index
     @latest_program_videos = Program.latest_videos
     @top_today = Video.top_today.limit(10)

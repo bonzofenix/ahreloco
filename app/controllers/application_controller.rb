@@ -28,6 +28,10 @@ class ApplicationController < ActionController::Base
     ArlManager.new
   end
 
+  def is_beta?
+    ENV['BETA'] == 'true'
+  end
+
   private
 
   def current_user

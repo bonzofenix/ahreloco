@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
 
   def create
     auth = OmniauthParser.parse(request.env["omniauth.auth"])
-    if ENV['BETA'] == 'true' and !BetaUser.can_login?(auth.username)
+    if is_beta? and !BetaUser.can_login?(auth.username)
       redirect_to(root_path, notice: 'usted no ha sido invitado aun a formar parte de ahreloco')
     else 
       @user = User.find_for_youtube(auth)

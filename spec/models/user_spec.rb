@@ -22,10 +22,6 @@ describe User do
       before{ user.add_videos([youtube_it_video]) }
       subject{ Video.last }
 
-      it 'adds the thumbnails' do
-        subject.thumbnails.length.should == video_thumbnails.length 
-      end
-
       it 'adds the likes' do 
         subject.likes.should_not be_nil
       end 

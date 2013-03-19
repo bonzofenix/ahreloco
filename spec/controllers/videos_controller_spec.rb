@@ -45,7 +45,6 @@ describe VideosController do
         
         its(:playlist_id){ should_not be_nil }
         its(:user){ should_not be_nil }
-
       end
       
       it 'looks for the upload token' do

@@ -2,8 +2,6 @@
 
 FactoryGirl.define do
   factory :beta_user do
-    username "MyString"
-    active false
-    email "MyString"
+    username 'thiasdhasid/bonzofenix'
   end
 end

@@ -6,29 +6,33 @@ describe UsersController do
   let(:other_video){ create :video, user: user }
 
 
-  describe 'get show' do
-    before do
-      ArlManager.any_instance.should_receive(:check_new_videos_for)
-    end
+  describe 'user signed in' do
+    before{ sign_in create(:user) }
 
-    it "returns http success" do
-      get 'show', id: user.id
-      response.should be_success
-    end
+    describe 'get show' do
+      before do
+        ArlManager.any_instance.should_receive(:check_new_videos_for)
+      end
 
-    it "returns all the users videos" do
-      get 'show', id: user.id
-      assigns(:videos).should_not be_nil
-    end
+      it "returns http success" do
+        get 'show', id: user.id
+        response.should be_success
+      end
 
-    it 'sets the default video' do
-      get 'show', id: user.id
-      assigns(:default_video).should == user.videos.last
-    end
+      it "returns all the users videos" do
+        get 'show', id: user.id
+        assigns(:videos).should_not be_nil
+      end
 
-    it 'hits the video' do
-      Video.any_instance.should_receive :hit_it! 
-      get :show, id: user.id, video_id: video.id
+      it 'sets the default video' do
+        get 'show', id: user.id
+        assigns(:default_video).should == user.videos.last
+      end
+
+      it 'hits the video' do
+        Video.any_instance.should_receive :hit_it! 
+        get :show, id: user.id, video_id: video.id
+      end
     end
   end
 end

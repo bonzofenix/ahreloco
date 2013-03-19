@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe HomeController do
   include_context 'youtube it mocks'
-
+  
   describe '.index' do
     it 'returns http success' do
       get :index
@@ -16,7 +16,7 @@ describe HomeController do
       end
 
       it 'assings top today' do
-        assigns(:top_taday).should_not be_nil
+        assigns(:top_today).should_not be_nil
       end
 
       it 'assings top today' do
