@@ -15,20 +15,20 @@ describe HomeController do
         get :index
       end
 
-      it 'assings top today' do
-        assigns(:top_today).should_not be_nil
-      end
 
       it 'assings top today' do
         assigns(:week_conquest).should_not be_nil
       end
-
-      it 'assings top week' do
+      it 'assings top today, week and month for comunity' do
+        assigns(:top_today).should_not be_nil
         assigns(:top_week).should_not be_nil
+        assigns(:top_month).should_not be_nil
       end
 
-      it 'assings top month' do
-        assigns(:top_month).should_not be_nil
+      it 'assings top today, week and month for programs' do
+        assigns(:top_today_programs).should_not be_nil
+        assigns(:top_week_programs).should_not be_nil
+        assigns(:top_month_programs).should_not be_nil
       end
     end
   end

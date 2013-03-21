@@ -1,7 +1,9 @@
 require 'spec_helper'
 
 describe Video do
+  let(:program){ create :program, :with_channel }
   let(:video){ create :video } 
+  let(:other_video_with_program){ create :video, user: program.users.first } 
   include_context 'youtube it mocks'
 
   describe '.top_today'  do
@@ -67,6 +69,11 @@ describe Video do
       video
       expect{ video.hit_it! }.to change{ video.reload.arl_views_month }.by 1
     end
+  end
 
+  it 'returns aonly the videos with programs' do
+    video
+    other_video_with_program 
+    Video.with_program.all.count.should == 1
   end
 end

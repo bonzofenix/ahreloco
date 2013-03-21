@@ -3,6 +3,7 @@ class Video < ActiveRecord::Base
   scope :top_today, order('arl_views_today DESC')
   scope :top_week, order('arl_views_week DESC')
   scope :top_month, order('arl_views_month DESC')
+  scope :with_program, joins(user:[ :programs])
   scope :latest_published, order('published_at DESC')
 
   attr_accessible :video_id, :title, :is_complete, :likes, :dislikes, :playlist_id,

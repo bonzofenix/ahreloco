@@ -63,11 +63,12 @@
             Este Mes
       .tab-content
         #mv-day.tab-pane.active
-          = render 'videos/home_list', videos: @top_today
+          = render 'videos/home_list', videos: @top_today_programs
         #mv-week.tab-pane
-          = render 'videos/home_list', videos: @top_week
+          = render 'videos/home_list', videos: @top_week_programs
         #mv-month.tab-pane
-          = render 'videos/home_list', videos: @top_month
+          = render 'videos/home_list', videos: @top_month_programs
+
 
 
 
