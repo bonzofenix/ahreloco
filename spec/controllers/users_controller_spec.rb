@@ -11,13 +11,26 @@ describe UsersController do
 
     describe 'get show' do
       before do
-        ArlManager.any_instance.should_receive(:check_new_videos_for)
+        ArlManager.any_instance.stub(:check_new_videos_for)
+      end
+
+      describe 'when user is not found' do
+        it 'redirects to home' do
+          get 'show', id: 123123
+          response.should redirect_to(home_index_path)
+        end
+
+        it 'flashes alert' do
+          get 'show', id: 123123
+          flash[:notice].should_not be_nil
+        end
       end
 
       it "returns http success" do
         get 'show', id: user.id
         response.should be_success
       end
+
 
       it "returns all the users videos" do
         get 'show', id: user.id
@@ -27,6 +40,11 @@ describe UsersController do
       it 'sets the default video' do
         get 'show', id: user.id
         assigns(:default_video).should == user.videos.last
+      end
+
+      it 'checks for new videos' do
+        ArlManager.any_instance.should_receive :check_new_videos_for
+        get :show, id: user.id
       end
 
       it 'hits the video' do
