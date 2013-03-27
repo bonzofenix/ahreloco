@@ -24,7 +24,8 @@
     .week-conquest
       %h4
         Concurso de la semana!
-      =render 'videos/conquest_list', videos: @week_conquest
+      .week-conquest-list
+        =render 'videos/conquest_list', videos: @week_conquest
 .row
   .span6
     .most-views.comunity
