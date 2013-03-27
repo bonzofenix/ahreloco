@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :authenticate_user!
+  #before_filter :authenticate_user!
   helper_method :current_user, :user_signed_in?
 
   def user_or_arl_client
@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_user!
-    redirect_to root_path, notice: 'Debe estar logeado para aceder!' if current_user.nil?
+    redirect_to root_path, notice: 'Debe estar logeado para aceder!' unless user_signed_in?
   end
 
   def client
