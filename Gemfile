@@ -6,6 +6,7 @@ gem 'activeadmin'
 gem 'spork-rails'
 gem 'whenever', require: false
 gem 'will_paginate-bootstrap'
+gem 'google-analytics-rails'
 gem 'exception_notification', :require => 'exception_notifier'
 
 group :assets do
