@@ -1,4 +1,6 @@
 class VideosController < InheritedResources::Base
+  before_filter :authenticate_user!
+
   def upload
     @video = Video.create(params[:video].merge({playlist_id: arl_manager.playlist_id,
       user_id: current_user.id }))

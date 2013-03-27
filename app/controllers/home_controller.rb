@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  skip_before_filter :authenticate_user!, only: :index 
+  before_filter :authenticate_user!
 
   def index
     @latest_program_videos = Program.latest_videos

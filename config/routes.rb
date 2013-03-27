@@ -1,6 +1,7 @@
 Ahreloco::Application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :admin_users, ActiveAdmin::Devise.config
+
   get "users/index"
   root :to => "beta_users#new"
 
@@ -14,6 +15,7 @@ Ahreloco::Application.routes.draw do
   resources :beta_users, only: [:new, :create, :show] 
 
   resources :home, only: [:index]
+
   resources :videos , only: [:index,:new, :create] do
     new do
        post :upload

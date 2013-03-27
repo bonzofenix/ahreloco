@@ -1,12 +1,13 @@
 ActiveAdmin.setup do |config|
 
+  config.authentication_method = :authenticate_admin_user!
   # == Site Title
   #
   # Set the title that is displayed on the main layout
   # for each of the active admin pages.
   #
-  config.site_title = "Ahreloco"
   config.skip_before_filter :authenticate_user!
+  config.site_title = "Ahreloco"
 
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
@@ -56,7 +57,6 @@ ActiveAdmin.setup do |config|
   #
   # This setting changes the method which Active Admin calls
   # within the controller.
-  config.authentication_method = :authenticate_admin_user!
 
 
   # == Current User

@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  #before_filter :authenticate_user!
   helper_method :current_user, :user_signed_in?
 
   def user_or_arl_client
