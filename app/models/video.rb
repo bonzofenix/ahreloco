@@ -4,6 +4,9 @@ class Video < ActiveRecord::Base
   scope :top_week, order('arl_views_week DESC')
   scope :top_month, order('arl_views_month DESC')
   scope :with_program, joins(user:[ :programs])
+  scope :from_community, joins("INNER JOIN \"users\" ON \"users\".\"id\" = \"videos\".\"user_id\" FULL OUTER JOIN \"programs_users\" ON \"programs_users\".\"user_id\" = \"users\".\"id\"")
+    .where("\"programs_users\".\"user_id\" IS NULL" )
+
   scope :latest_published, order('published_at DESC')
 
   attr_accessible :video_id, :title, :is_complete, :likes, :dislikes, :playlist_id,

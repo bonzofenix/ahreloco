@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Video do
   let(:program){ create :program, :with_channel }
   let(:video){ create :video } 
+  let(:video_with_user){ create :video, :with_user } 
   let(:other_video_with_program){ create :video, user: program.users.first } 
   include_context 'youtube it mocks'
 
@@ -75,5 +76,13 @@ describe Video do
     video
     other_video_with_program 
     Video.with_program.all.count.should == 1
+    Video.with_program.first.should == other_video_with_program 
+  end
+
+  it 'returns aonly the videos from comunity' do
+    video_with_user
+    other_video_with_program 
+    Video.from_community.all.count.should == 1
+    Video.from_community.first.should == video_with_user
   end
 end

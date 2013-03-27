@@ -8,5 +8,8 @@ FactoryGirl.define do
     factory :older_video do
       published_at Date.today - 1.day
     end
+    trait :with_user do
+      user
+    end
   end
 end
