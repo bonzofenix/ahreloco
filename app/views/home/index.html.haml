@@ -28,29 +28,15 @@
         =render 'videos/conquest_list', videos: @week_conquest
 .row
   .span6
-    .most-views.comunity
+    .last-videos-comunity
       %h4
-        Videos mas vistos (Comunidad)
-      %ul.nav.nav-pills
-        %li.active
-          %a{"data-toggle" => "pill", :href => "#mv-day"}
-            Hoy
-        %li
-          %a{"data-toggle" => "pill", :href => "#mv-week"}
-            Esta Semana
-        %li
-          %a{"data-toggle" => "pill", :href => "#mv-month"}
-            Este Mes
-      .tab-content
-        #mv-day.tab-pane.active
-          = render 'videos/home_list', videos: @top_today
-        #mv-week.tab-pane
-          = render 'videos/home_list', videos: @top_week
-        #mv-month.tab-pane
-          = render 'videos/home_list', videos: @top_month
+        Videos comunidad
+      = render 'videos/home_list', videos: @videos
+      = will_paginate @videos, :renderer => BootstrapPagination::Rails
   .span6
     .most-views.programs
       %h4
+        = image_tag 'flame.png'
         Videos mas vistos (Programas)
       %ul.nav.nav-pills
         %li.active
@@ -70,6 +56,27 @@
         #mv-month.tab-pane
           = render 'videos/home_list', videos: @top_month_programs
 
+    .most-views.comunity
+      %h4
+        = image_tag 'flame.png'
+        Videos mas vistos (Comunidad)
+      %ul.nav.nav-pills
+        %li.active
+          %a{"data-toggle" => "pill", :href => "#mv-day"}
+            Hoy
+        %li
+          %a{"data-toggle" => "pill", :href => "#mv-week"}
+            Esta Semana
+        %li
+          %a{"data-toggle" => "pill", :href => "#mv-month"}
+            Este Mes
+      .tab-content
+        #mv-day.tab-pane.active
+          = render 'videos/home_list', videos: @top_today
+        #mv-week.tab-pane
+          = render 'videos/home_list', videos: @top_week
+        #mv-month.tab-pane
+          = render 'videos/home_list', videos: @top_month
 
 
 

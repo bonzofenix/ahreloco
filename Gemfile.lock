@@ -381,5 +381,6 @@ DEPENDENCIES
   uglifier (>= 1.0.3)
   unicorn (>= 4.3.1)
   whenever
+  will_paginate
   will_paginate-bootstrap
   youtube_it!

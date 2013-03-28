@@ -16,8 +16,6 @@
         .channels.hide
           -p.users.each do |u|
             %li.channel= link_to u.username, user_path(u)
-  %li.dropdown.programs
-    = link_to 'Videos de la comunidad', videos_path
 
 %ul.nav.pull-right
   - if user_signed_in?
