@@ -52,3 +52,42 @@ background-color: #1684c2;
   padding: 2px;
   margin: 2px 0px;
 }
+
+
+.container-footer {
+  background-color: #fafafa;
+  border-radius: 8px 8px 8px 8px;
+  border: 1px solid #d5d5d5;
+  -webkit-box-shadow: 0 0 2px #fff;
+  -moz-box-shadow: 0 0 2px #fff;
+  box-shadow: 0 0 2px #fff;
+  margin-bottom: 30px;
+
+  .container-footer-inner{
+    padding: 20px;
+    dl{
+      float: left;
+      padding-right: 40px;
+
+      dd {
+        margin-left: 0px;
+      }
+      dt {
+        padding-bottom: 5px;
+        font-weight: bold;
+      }
+    }
+  }    
+}
+.team-member{
+  height: 260px;
+  .picture {
+    height: 188px;
+    background-color: #F90;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #f6f6f6;
+    border: 1px solid #ececec;
+    padding: 5px;
+  }
+}

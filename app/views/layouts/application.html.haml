@@ -24,5 +24,30 @@
               = render 'layouts/messages'
               = yield
           %footer
+          %footer.row
+            .container-footer.span12
+              .container-footer-inner
+                %dl
+                  %dt
+                    Ahreloco.tv
+                %dl
+                  %dt
+                    Quienes somos?
+                  %dd
+                    = link_to('Equipo', team_index_path)
+                %dl
+                  %dt
+                    Ayuda
+                  %dd
+                    = link_to('Preguntas Frecuents', '#')
+                  %dd
+                    = mail_to('bonzofenix@gmail.com','Contactanos')
+                %dl
+                  %dt
+                    Comunidad
+                  %dd
+                    = link_to('Facebook', "http://www.facebook.com/ahrelocotv", rel: 'nofollow')
+                  %dd
+                    = link_to('Twitter',"https://twitter.com/ahrelocotv", :rel => 'nofollow')
       / ! end of .container
     / ! end of #main
