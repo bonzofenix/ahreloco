@@ -64,7 +64,8 @@ background-color: #1684c2;
   margin-bottom: 30px;
 
   .container-footer-inner{
-    padding: 20px;
+    overflow: hidden;
+    padding: 20px 20px 0px;
     dl{
       float: left;
       padding-right: 40px;
