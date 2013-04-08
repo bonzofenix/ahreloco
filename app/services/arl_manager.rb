@@ -26,7 +26,10 @@ class ArlManager
   def playlist_id
     playlist.playlist_id
   end
-
+  
+  def get_video(id)
+    client.video_by(id).videos.first
+  end
 
   def playlist
     return @playlist if @playlist

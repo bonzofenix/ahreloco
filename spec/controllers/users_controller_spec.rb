@@ -4,16 +4,12 @@ describe UsersController do
   let(:user){ create :user, :with_video }
   let(:video){ create :video, user: user }
   let(:other_video){ create :video, user: user }
-
+  include_context 'youtube it mocks'
 
   describe 'user signed in' do
     before{ sign_in create(:user) }
 
     describe 'get show' do
-      before do
-        ArlManager.any_instance.stub(:check_new_videos_for)
-      end
-
       describe 'when user is not found' do
         it 'redirects to home' do
           get 'show', id: 123123
@@ -31,6 +27,17 @@ describe UsersController do
         response.should be_success
       end
 
+      it 'updates the selected video' do
+        Video.any_instance.should_receive(:update_with)
+        get 'show', id: user.id
+      end
+
+      it 'looks up for the video' do
+        video
+        expect do
+          get 'show', id: user.id, video_id: video.id
+        end.to change{ video.reload.updated_at }
+      end
 
       it "returns all the users videos" do
         get 'show', id: user.id
