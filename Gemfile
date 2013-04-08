@@ -46,6 +46,7 @@ group :development, :test do
   gem 'timecop'
   gem 'debugger'
   gem "rspec-rails", ">= 2.12.2"
+  gem 'shoulda-matchers'
   gem "factory_girl_rails", ">= 4.1.0"
 end
 gem 'rubber'

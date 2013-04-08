@@ -1,5 +1,5 @@
 if Rails.env.production? 
-  OmniAuth.config.full_host = 'http://ahreloco.herokuapp.com'
+  OmniAuth.config.full_host = 'http://ahreloco.tv'
 else
   OmniAuth.config.full_host = "http://localhost:8080"
 end

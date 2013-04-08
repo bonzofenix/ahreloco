@@ -30,7 +30,7 @@ class VideosController < InheritedResources::Base
 
   protected
   def collection
-    @videos ||= end_of_association_chain.order('published_at DESC').page(params[:page])
+    @videos ||= end_of_association_chain.latest_published.page(params[:page])
   end
 
   private 
