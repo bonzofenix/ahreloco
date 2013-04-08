@@ -4,6 +4,6 @@ class AddUniqueVideoId < ActiveRecord::Migration
   end
 
   def down
-    aemove_index(:videos, column: :video_id)
+    remove_index(:videos, column: :video_id)
   end
 end
