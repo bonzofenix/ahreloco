@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130312202943) do
+ActiveRecord::Schema.define(:version => 20130408203023) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -116,5 +116,7 @@ ActiveRecord::Schema.define(:version => 20130312202943) do
     t.datetime "updated_at",                         :null => false
     t.string   "playlist_id"
   end
+
+  add_index "videos", ["video_id"], :name => "index_videos_on_video_id", :unique => true
 
 end
