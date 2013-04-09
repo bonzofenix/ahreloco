@@ -28,7 +28,7 @@ class ArlManager
   end
   
   def get_video(id)
-    client.video_by(id).videos.first
+    client.video_by(id)
   end
 
   def playlist
