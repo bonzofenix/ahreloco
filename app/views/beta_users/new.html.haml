@@ -11,11 +11,11 @@
       = f.label :username , 'Tu canal de youtube', class: 'control-label'
       .controls
         = f.text_field :username, placeholder: 'http://www.youtube.com/user/tucanal',
-          class: 'input-xlarge'
+          class: 'input-xlarge', required: true
     .control-group
       = f.label :email, 'Tu email', class: 'control-label'
       .controls
-        = f.text_field :email, placeholder: 'tu@email.com',
-          class: 'input-xlarge'
+        = f.email_field :email, placeholder: 'tu@email.com',
+          class: 'input-xlarge', required: true
     .form-actions
       = f.submit 'QUIERO UNA INVITACION!',class: 'btn btn-success'
