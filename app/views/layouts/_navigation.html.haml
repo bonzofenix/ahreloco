@@ -7,7 +7,7 @@
       Programas
       %b.caret
     %ul.dropdown-menu
-      - Program.all.each do |p|
+      - Program.order(:name).all.each do |p|
         %li.program
           %a
             = image_tag p.avatar_url
