@@ -12,15 +12,6 @@ describe VideosController do
   end
 
 
-  describe 'get Index' do
-    it 'should bring videos ordered by published date' do 
-      even_older_video
-      video
-      older_video
-      get :index
-      assigns(:videos).should == [video, older_video, even_older_video]
-    end
-  end
 
   describe 'when user is logged in' do
     before do

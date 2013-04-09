@@ -35,7 +35,6 @@ shared_context 'youtube it mocks' do
 
 
   let(:video_thumbnails) do 
-
     [].tap do |a|
       a << YouTubeIt::Model::Thumbnail.new(url:"http://i.ytimg.com/vi/pw4F_0TWmE8/default.jpg", height: 90, width:120, time:"00:00:21.500", name:nil)
       a << YouTubeIt::Model::Thumbnail.new(url:"http://i.ytimg.com/vi/pw4F_0TWmE8/mqdefault.jpg", height:180, width:320, time:nil, name:nil)
@@ -48,14 +47,14 @@ shared_context 'youtube it mocks' do
 
   let(:youtube_it_playlist) do
     YouTubeIt::Model::Playlist.new( title: ArlManager.new.playlist_name,
-      playlist_id: '2', published: '2013-01-26T20:32:19.000Z' )
+      playlist_id: 'asd2', published: '2013-01-26T20:32:19.000Z' )
   end
 
   let(:youtube_it_playlists) do
     [].tap do |a|
       a << youtube_it_playlist
       a << YouTubeIt::Model::Playlist.new( title: 'concurso semana 4 del 2013', 
-        playlist_id: '1', published: '2013-02-03T20:32:19.000Z' )
+        playlist_id: 'asd1', published: '2013-02-03T20:32:19.000Z' )
     end
   end
 
