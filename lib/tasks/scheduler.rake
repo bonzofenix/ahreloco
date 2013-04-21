@@ -7,12 +7,12 @@ end
 
 task :reset_week_views => :environment do
   puts "resetting week views..."
-  Video.update_all(arl_views_week: 0)
+  Video.update_all(arl_views_week: 0) if Time.now.wday == 1 
   puts "done."
 end
 
 task :reset_month_views => :environment do
   puts "resetting months views..."
-  Video.update_all(arl_views_month: 0)
+  Video.update_all(arl_views_month: 0) if Time.now.day == 1 
   puts "done."
 end
