@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   include ActionView::Helpers::DateHelper
   def index
-    youtube_comments = user_or_arl_client.comments(params[:video_id])
+    youtube_comments = arl_manager.client.comments(params[:video_id])
 
     @comments = youtube_comments.collect do |c|
       username = get_username(c.author)      
@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
   
   def create
     @comment = Comment.new(params[:comment])
-    user_or_arl_client.add_comment(@comment.video_id, @comment.content)
+    arl_manager.client.add_comment(@comment.video_id, @comment.content)
     render nothing: true
   end
   

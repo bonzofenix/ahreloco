@@ -8,6 +8,11 @@ describe SessionsController do
       request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:youtube] 
     end
 
+    it 'session token_created_at should not come as nil' do
+      post :create      
+      session[:token_created_at].should_not be_nil
+    end
+
     it 'saves the token in the session' do
         post :create      
         session[:yt_token].should == 'this is the token'
@@ -34,13 +39,10 @@ describe SessionsController do
         User.count.should == 1 
     end
 
-    it 'overrides the subscriptors count every time he logs in' do
-      post :create      
-      request.env['omniauth.auth']['info']['subscribers_count'] = '100'
-      expect do
-        post :create      
-      end.to change{User.first.subscribers_count}
-    end
+    it 'updates the user information on login' do
+      User.any_instance.should_receive :update_youtube_attributes
+      post :create     
+   end
 
     describe '.failure' do
       it 'flash on failure' do

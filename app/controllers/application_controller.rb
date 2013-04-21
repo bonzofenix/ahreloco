@@ -3,11 +3,12 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :user_signed_in?
 
   def user_or_arl_client
-    if current_user
-      client
-    else
-      arl_manager.client
-    end
+    current_client = current_user.nil? ? arl_manager.client : client
+    #if session[:token_created_at] < 50.minutes.ago
+      #current_client.refresh_access_token!
+    #end
+
+    current_client
   end
 
   def authenticate_user!
@@ -17,10 +18,6 @@ class ApplicationController < ActionController::Base
   def client
     token = session[:yt_token]
     @client ||= YouTubeIt::AuthSubClient.new(token: token, dev_key: ENV['DEV_KEY'])
-    #@client ||= YouTubeIt::OAuth2Client.new(client_access_token: token,
-    #  client_refresh_token: token, 
-    #  client_id: ENV['YOUTUBE_KEY'], client_secret: ENV['YOUTUBE_SECRET'],
-    #  dev_key: ENV['DEV_KEY'], expires_at: Time.now + 50.minutes)
   end
   
   def arl_manager

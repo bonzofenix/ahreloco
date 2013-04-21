@@ -3,7 +3,7 @@ class ArlManager
 
   def initialize
     @client = YouTubeIt::Client.new(username:  ENV['ARL_USERNAME'],
-      password: ENV['ARL_PASSWORD'], dev_key: ENV['DEV_KEY'])
+      password: ENV['ARL_PASSWORD'], dev_key: ENV['DEV_KEY'], client_id: ENV['YOUTUBE_KEY'])
   end
   
   def playlist_name
@@ -15,7 +15,7 @@ class ArlManager
   end
 
   def check_new_videos_for(user)
-    videos = @client.videos_by(user: user.username).videos
+    videos = client.videos_by(user: user.username).videos
     user.add_videos(videos)
   end
 
@@ -34,10 +34,12 @@ class ArlManager
   def playlist
     return @playlist if @playlist
     @playlist = find_week_playlist || client.add_playlist(title: playlist_name)
+    debugger
+    @playlist 
   end
 
   def find_week_playlist
-    all_playlists = @client.playlists.select{ |p| p.title == playlist_name }
+    all_playlists = client.playlists.select{ |p| p.title == playlist_name }
     @playlist = all_playlists.first if all_playlists
   end
 end

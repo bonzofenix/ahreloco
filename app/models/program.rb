@@ -8,6 +8,6 @@ class Program < ActiveRecord::Base
   end
 
   def self.latest_videos
-    all.collect {|p| p.latest_video }.compact!
+    all.collect {|p| p.latest_video }.compact
   end
 end

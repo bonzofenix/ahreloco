@@ -23,12 +23,11 @@ describe ArlManager do
 
     it 'creates the playlist if it doesnt exist' do
       manager.client.stub(playlists: [])
-      manager.client.should_receive(:add_playlist)
+      manager.client.should_receive(:add_playlist).and_return( youtube_it_playlist )
       manager.add_video_to_week_playlist(video)
     end
    
     it 'doesnt create the playlist if exists' do
-      pending
       manager.client.should_not_receive(:add_playlist)
       manager.add_video_to_week_playlist(video)
     end

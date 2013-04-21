@@ -7,7 +7,10 @@ describe UsersController do
   include_context 'youtube it mocks'
 
   describe 'user signed in' do
-    before{ sign_in create(:user) }
+    before do
+      sign_in create(:user) 
+      ArlManager.any_instance.stub :check_new_videos_for
+    end
 
     describe 'get show' do
       describe 'when user is not found' do

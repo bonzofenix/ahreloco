@@ -22,7 +22,7 @@ describe BetaUsersController do
 
     it 'redirects to show' do
       post :create, beta_user: attributes_for(:beta_user)
-      response.should redirect_to(user_path(BetaUser.last))
+      response.should redirect_to(beta_user_path(BetaUser.last))
     end
   end
 end
