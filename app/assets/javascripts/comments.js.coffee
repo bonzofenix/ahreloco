@@ -17,9 +17,9 @@ $ ->
 
   $('.new_comment .btn').click ->
     add_comment 
-      username:  $('#comment_username').val()
+      username: $('a#username').text().trim()
       content:  $('#comment_content').val()
+      time_ago:  '0 minutos'
 
     $('.comment').first().effect("highlight", {}, 3000)
-    $('#comment_username').val('')
     $('#comment_content').val('')

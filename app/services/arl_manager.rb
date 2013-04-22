@@ -34,8 +34,6 @@ class ArlManager
   def playlist
     return @playlist if @playlist
     @playlist = find_week_playlist || client.add_playlist(title: playlist_name)
-    debugger
-    @playlist 
   end
 
   def find_week_playlist
