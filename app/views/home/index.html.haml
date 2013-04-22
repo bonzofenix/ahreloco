@@ -32,7 +32,7 @@
       %h4
         Videos comunidad
       = render 'videos/home_list', videos: @videos
-      = will_paginate @videos, :renderer => BootstrapPagination::Rails
+      = will_paginate @videos, renderer: BootstrapPagination::Rails, previous_label: 'Anterior', next_label: 'Siguiente'
   .span6
     .most-views.programs
       %h4
