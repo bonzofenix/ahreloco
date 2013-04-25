@@ -9,7 +9,6 @@ describe UsersController do
   describe 'user signed in' do
     before do
       sign_in create(:user) 
-      ArlManager.any_instance.stub :check_new_videos_for
     end
 
     describe 'get show' do
@@ -24,42 +23,49 @@ describe UsersController do
           flash[:notice].should_not be_nil
         end
       end
+      
+      describe 'when the user is found' do
+        it "checks for new videos" do
+          controller.should_receive :check_for_new_videos
+          get 'show', id: user.id
+        end
 
-      it "returns http success" do
-        get 'show', id: user.id
-        response.should be_success
-      end
+        it "returns http success" do
+          get 'show', id: user.id
+          response.should be_success
+        end
 
-      it 'updates the selected video' do
-        Video.any_instance.should_receive(:update_with)
-        get 'show', id: user.id
-      end
+        it 'updates the selected video' do
+          Video.any_instance.should_receive(:update_with)
+          get 'show', id: user.id
+        end
 
-      it 'looks up for the video' do
-        video
-        expect do
-          get 'show', id: user.id, video_id: video.id
-        end.to change{ video.reload.updated_at }
-      end
+        it 'looks up for the video' do
+          video
+          expect do
+            get 'show', id: user.id, video_id: video.id
+          end.to change{ video.reload.updated_at }
+        end
 
-      it "returns all the users videos" do
-        get 'show', id: user.id
-        assigns(:videos).should_not be_nil
-      end
+        it "returns all the users videos" do
+          get 'show', id: user.id
+          assigns(:videos).should_not be_nil
+        end
 
-      it 'sets the default video' do
-        get 'show', id: user.id
-        assigns(:default_video).should == user.videos.last
-      end
+        it 'sets the default video' do
+          get 'show', id: user.id
+          assigns(:video).should == user.videos.last
+        end
 
-      it 'checks for new videos' do
-        ArlManager.any_instance.should_receive :check_new_videos_for
-        get :show, id: user.id
-      end
+        it 'checks for new videos' do
+          ArlManager.any_instance.should_receive :check_for_new_videos
+          get :show, id: user.id
+        end
 
-      it 'hits the video' do
-        Video.any_instance.should_receive :hit_it! 
-        get :show, id: user.id, video_id: video.id
+        it 'hits the video' do
+          Video.any_instance.should_receive :hit_it! 
+          get :show, id: user.id, video_id: video.id
+        end
       end
     end
   end

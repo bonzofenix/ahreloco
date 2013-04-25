@@ -1,29 +1,29 @@
-%h2= @default_video.title
+%h2= @video.title
 .row
   .span8
     %object{:height => "385", :width => "640"}
-      %param{:name => "movie", :value => "http://www.youtube.com/v/#{@default_video.video_id}&autoplay=1"}/
-      %embed{:height => "385", :src => "http://www.youtube.com/v/#{@default_video.video_id}&autoplay=1", :type => "application/x-shockwave-flash", :width => "640"}
+      %param{:name => "movie", :value => "http://www.youtube.com/v/#{@video.video_id}&autoplay=1"}/
+      %embed{:height => "385", :src => "http://www.youtube.com/v/#{@video.video_id}&autoplay=1", :type => "application/x-shockwave-flash", :width => "640"}
     - if current_user
-      = render 'comments/new',video_id: @default_video.video_id
+      = render 'comments/new',video_id: @video.video_id
     = render 'comments/list'
   .span4
     .row-fluid
       .span12.well
         .row-fluid
           .span4
-            = image_tag @default_video.user.avatar_url
+            = image_tag @video.user.avatar_url
           .span8
-            %h4= @default_video.user.username
+            %h4= @video.user.username
             %h5
               subscriptores:
-              = @default_video.user.subscribers_count
+              = @video.user.subscribers_count
             %h5
               likes:
-              = @default_video.user.likes
+              = @video.user.likes
             %h5
               dislikes:
-              = @default_video.user.dislikes
+              = @video.user.dislikes
     .videos
       - if @videos
         -@videos.each do |video|
@@ -37,5 +37,5 @@
                 visto
                 = video.view_count
 
-- page_data('video-id' => @default_video.video_id )
+- page_data('video-id' => @video.video_id )
 
