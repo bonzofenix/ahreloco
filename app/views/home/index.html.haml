@@ -40,20 +40,20 @@
         +Vistos de los Programas
       %ul.nav.nav-pills
         %li.active
-          %a{"data-toggle" => "pill", :href => "#mv-day"}
+          %a{"data-toggle" => "pill", :href => "#mv-program-day"}
             Hoy
         %li
-          %a{"data-toggle" => "pill", :href => "#mv-week"}
+          %a{"data-toggle" => "pill", :href => "#mv-program-week"}
             Esta Semana
         %li
-          %a{"data-toggle" => "pill", :href => "#mv-month"}
+          %a{"data-toggle" => "pill", :href => "#mv-program-month"}
             Este Mes
       .tab-content
-        #mv-day.tab-pane.active
+        #mv-program-day.tab-pane.active
           = render 'videos/home_list', videos: @top_today_programs
-        #mv-week.tab-pane
+        #mv-program-week.tab-pane
           = render 'videos/home_list', videos: @top_week_programs
-        #mv-month.tab-pane
+        #mv-program-month.tab-pane
           = render 'videos/home_list', videos: @top_month_programs
 
     .most-views.comunity
@@ -62,20 +62,20 @@
         +Vistos en la Comunidad
       %ul.nav.nav-pills
         %li.active
-          %a{"data-toggle" => "pill", :href => "#mv-day"}
+          %a{"data-toggle" => "pill", :href => "#mv-community-day"}
             Hoy
         %li
-          %a{"data-toggle" => "pill", :href => "#mv-week"}
+          %a{"data-toggle" => "pill", :href => "#mv-community-week"}
             Esta Semana
         %li
-          %a{"data-toggle" => "pill", :href => "#mv-month"}
+          %a{"data-toggle" => "pill", :href => "#mv-community-month"}
             Este Mes
       .tab-content
-        #mv-day.tab-pane.active
+        #mv-community-day.tab-pane.active
           = render 'videos/home_list', videos: @top_today
-        #mv-week.tab-pane
+        #mv-community-week.tab-pane
           = render 'videos/home_list', videos: @top_week
-        #mv-month.tab-pane
+        #mv-community-month.tab-pane
           = render 'videos/home_list', videos: @top_month
 
 
