@@ -14,9 +14,8 @@ class UsersController < InheritedResources::Base
 
   def update_video_values
     return unless video
-    youtube_video = youtube_videos.select {|v| v.video_id.split(':').last == @video.video_id }.first
-    youtube_video = youtube_video.first
-    @video.update_with(youtube_video) if youtube_video
+    youtube_video = youtube_videos.select{|v| v.video_id.split(':').last == video.video_id }
+    video.update_with(youtube_video.first) unless youtube_video.empty?
   end
   
   def video
