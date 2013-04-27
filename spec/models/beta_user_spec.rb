@@ -3,6 +3,12 @@ require 'spec_helper'
 describe BetaUser do
   let(:active_beta){ create :beta_user, active: true }
   let(:beta){ create :beta_user }
+  describe 'when saving' do
+    it 'downcase the user' do
+      BetaUser.create(username: 'ThisUser',email: 'this@email.com')
+      BetaUser.last.username.should == 'thisuser'
+    end
+  end
 
   describe '.can_login?' do
     describe 'when is active' do
