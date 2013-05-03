@@ -4,9 +4,9 @@
       Videos de los programas
     .flexslider
       %ul.slides
-        -@latest_program_videos.each do |v|
+        -@carrousel.each do |v|
           %li{"data-thumb" => v.small_thumb}
-            =link_to user_path(v.user,video_id: v.id) do
+            =link_to user_path(v.user, video_id: v.id) do
               = image_tag(v.big_thumb)
               .well.slide-user-info
                 %h4

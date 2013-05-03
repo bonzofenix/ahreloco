@@ -1,12 +1,15 @@
 class UsersController < InheritedResources::Base
   before_filter :authenticate_user!
-  actions :show
 
   def show
     @user = User.find(params[:id])
     check_for_new_videos
-    update_video_values
-    hit_video
+    if has_videos?
+      update_video_values
+      hit_video
+    else
+      redirect_to user_profile_path(@user)
+    end
   rescue ActiveRecord::RecordNotFound
     flash[:notice] = 'Este usuario no pose una cuenta en AhReloco.tv'
     redirect_to home_index_path
@@ -17,9 +20,13 @@ class UsersController < InheritedResources::Base
     youtube_video = youtube_videos.select{|v| v.video_id.split(':').last == video.video_id }
     video.update_with(youtube_video.first) unless youtube_video.empty?
   end
-  
+ 
+  def has_videos?
+    @user.has_videos?
+  end 
+
   def video
-    @video ||= params[:video_id].nil? ? @videos.last : @user.videos.find(params[:video_id])
+    @video ||= params[:video_id].nil? ? @user.videos.last : @user.videos.find(params[:video_id])
   end
 
   def hit_video

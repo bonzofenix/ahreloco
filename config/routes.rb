@@ -10,7 +10,9 @@ Ahreloco::Application.routes.draw do
   match 'auth/failure' => 'sessions#failure'
   match "/signout" => "sessions#destroy", :as => :signout
 
-  resources :users, only: [:show, :index] 
+  resources :users, only: [:show, :index]  do
+    get :profile
+  end
 
   resources :beta_users, only: [:new, :create, :show] 
 

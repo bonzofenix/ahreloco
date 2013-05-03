@@ -34,6 +34,7 @@ describe VideosController do
         before{ post :upload, video: attributes_for(:video) }
         subject{ assigns :video }  
         
+        its(:published_at){ should_not be_nil }
         its(:playlist_id){ should_not be_nil }
         its(:user){ should_not be_nil }
       end
@@ -46,6 +47,10 @@ describe VideosController do
     end
 
     describe 'when saving video' do
+      before do 
+        ArlManager.any_instance.should_receive :add_video_to_week_playlist
+      end
+
       it 'updates the the video id' do
         expect do
           get :save_video, save_video_params
@@ -60,7 +65,6 @@ describe VideosController do
       end
 
       it 'adds videos to week conquests' do
-        ArlManager.any_instance.should_receive :add_video_to_week_playlist
         get :save_video, save_video_params
       end
 

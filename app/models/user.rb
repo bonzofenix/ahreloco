@@ -5,6 +5,10 @@ class User < ActiveRecord::Base
   has_many :videos
   attr_accessible :mail, :name, :provider, :uid, :subscribers_count  
 
+  def has_videos?
+    !videos.empty?
+  end
+
 
   def add_videos(new_videos, playlist_id = nil)
     new_videos.each do |a_video|

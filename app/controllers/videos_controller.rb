@@ -3,7 +3,7 @@ class VideosController < InheritedResources::Base
 
   def upload
     @video = Video.create(params[:video].merge({playlist_id: arl_manager.playlist_id,
-      user_id: current_user.id }))
+      user_id: current_user.id, published_at: Date.today }))
    
     if @video
       @upload_info = arl_manager.client.upload_token(options_for(@video),
@@ -39,7 +39,8 @@ class VideosController < InheritedResources::Base
             description: '',
             category: 'People',
             keywords: ['test'],
-            private: 'true' }
+            private: false, 
+            unlisted: true }
   end
 end
 

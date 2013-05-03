@@ -94,6 +94,7 @@ shared_context 'youtube it mocks' do
       cli.stub(:playlists).and_return( youtube_it_playlists )
       cli.stub( playlist: stub( videos: [youtube_it_video] ))
       cli.stub( video_by: youtube_it_video )
+      cli.stub( videos_by: stub(videos: []))
     end
     YouTubeIt::Model::Playlist.any_instance.tap do |ply|
       ply.stub(:playlist_id)

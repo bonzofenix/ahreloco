@@ -4,6 +4,17 @@ describe User do
   let(:user){ create :user }
   include_context 'youtube it mocks'
 
+  describe '.has videos' do
+    it 'return true when it has videos' do
+      user.should_not have_videos
+    end
+
+    it 'return false when it doesnt have videos' do
+      user.videos.create attributes_for(:video)
+      user.should have_videos
+    end
+  end
+
   describe '.add_videos' do
     it 'adds videos' do
       expect do

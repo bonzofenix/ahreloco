@@ -8,8 +8,18 @@ describe UsersController do
 
   describe 'user signed in' do
     before do
-      sign_in create(:user) 
+      sign_in user
     end
+
+
+    describe 'when user doesnt have any videos' do
+      it 'redirects to a profile page' do
+        user.videos.destroy_all
+        get 'show', id: user.id
+        response.should redirect_to(user_profile_path(user))
+      end
+    end
+
 
     describe 'get show' do
       describe 'when user is not found' do
@@ -25,17 +35,13 @@ describe UsersController do
       end
       
       describe 'when the user is found' do
-        it "checks for new videos" do
-          controller.should_receive :check_for_new_videos
-          get 'show', id: user.id
-        end
-
         it "returns http success" do
           get 'show', id: user.id
           response.should be_success
         end
 
         it 'updates the selected video' do
+          YouTubeIt::Client.any_instance.stub(videos_by: stub(videos: [youtube_it_video] ))
           Video.any_instance.should_receive(:update_with)
           get 'show', id: user.id
         end
@@ -54,11 +60,11 @@ describe UsersController do
 
         it 'sets the default video' do
           get 'show', id: user.id
-          assigns(:video).should == user.videos.last
+          assigns(:video).should == user.videos.reload.last
         end
 
         it 'checks for new videos' do
-          ArlManager.any_instance.should_receive :check_for_new_videos
+          controller.should_receive :check_for_new_videos
           get :show, id: user.id
         end
 

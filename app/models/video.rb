@@ -1,5 +1,6 @@
 class Video < ActiveRecord::Base
   belongs_to :user
+  belongs_to :playlist
   scope :top_today, order('arl_views_today DESC')
   scope :top_week, order('arl_views_week DESC')
   scope :top_month, order('arl_views_month DESC')

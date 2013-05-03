@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130422003720) do
+ActiveRecord::Schema.define(:version => 20130430014406) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -76,6 +76,13 @@ ActiveRecord::Schema.define(:version => 20130422003720) do
     t.integer  "user_id"
   end
 
+  create_table "playlists", :force => true do |t|
+    t.string   "title"
+    t.string   "youtube_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "programs", :force => true do |t|
     t.string   "name"
     t.string   "avatar_url"
@@ -118,7 +125,7 @@ ActiveRecord::Schema.define(:version => 20130422003720) do
     t.integer  "user_id"
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
-    t.string   "playlist_id"
+    t.integer  "playlist_id"
   end
 
   add_index "videos", ["video_id"], :name => "index_videos_on_video_id", :unique => true
