@@ -40,7 +40,7 @@ class VideosController < InheritedResources::Base
             category: 'People',
             keywords: ['test'],
             private: false, 
-            unlisted: true }
+            list: "denied"}
   end
 end
 
