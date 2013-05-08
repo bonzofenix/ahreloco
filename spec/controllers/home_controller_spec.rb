@@ -14,6 +14,7 @@ describe HomeController do
       
       describe 'top videos' do
         before do
+          create :playlist, :with_video 
           create :video
           get :index
         end

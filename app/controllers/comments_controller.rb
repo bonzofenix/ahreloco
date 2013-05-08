@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
         time_ago: time_ago_in_words(comment.updated)}
     end
 
-    render text: @comments.to_json 
+    render text: @comments.reverse.to_json 
   end
   
   def create
