@@ -1,6 +1,4 @@
 class HomeController < ApplicationController
-  before_filter :authenticate_user!
-
   def index
     @carrousel = Program.latest_videos
     @top_today = Video.from_community.top_today.limit(10)

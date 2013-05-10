@@ -3,7 +3,7 @@ Ahreloco::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
 
   get "users/index"
-  root :to => "beta_users#new"
+  root to: "home#index"
 
 
   match 'auth/youtube/callback' => 'sessions#create'

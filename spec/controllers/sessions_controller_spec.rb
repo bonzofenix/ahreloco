@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe SessionsController do
-  describe 'when beta'
   describe 'when not beta' do
     before do 
       controller.stub(is_beta?: false)

@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(params[:comment])
     @comment.user = current_user
-    arl_manager.client.add_comment(@comment.video_id, @comment.content)
+    client.add_comment(@comment.video_id, @comment.content)
     render nothing: true
   end
   

@@ -1,18 +1,16 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   helper_method :current_user, :user_signed_in?
-
-  def user_or_arl_client
-    current_client = current_user.nil? ? arl_manager.client : client
-    #if session[:token_created_at] < 50.minutes.ago
-      #current_client.refresh_access_token!
-    #end
-
-    current_client
-  end
+  before_filter :check_session_expiration
 
   def authenticate_user!
     redirect_to root_path, notice: 'Debe estar logeado para aceder!' unless user_signed_in?
+  end
+
+  def check_session_expiration
+    if user_signed_in? and session[:token_created_at] < 51.minutes.ago
+      redirect_to signout_path, notice: 'La session expiro. loggeate nuevamente!'
+    end
   end
 
   def client

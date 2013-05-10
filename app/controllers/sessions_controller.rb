@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_filter :authenticate_user!
+  skip_before_filter :authenticate_user! , :check_session_expiration
   before_filter :parse_auth, only: :create
 
   def create
@@ -27,6 +27,8 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    redirect_to home_index_path, notice: 'cerraste sesion'
+    # Respect the previous value
+    flash[:notice] = flash[:notice] || 'cerraste sesion' 
+    redirect_to home_index_path  
   end
 end
