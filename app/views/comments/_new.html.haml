@@ -1,7 +1,7 @@
-
 = form_for Comment.new, remote: true, class: 'form' do |f|
   .controlscomments_path
     = f.hidden_field :video_id, value: video_id
-    = f.text_area :content, placeholder: 'Comenta aca!', rows: 4, cols: 60,class: 'span8'
+    = f.hidden_field :content, value: ''
+    = text_area_tag :message, '', placeholder: 'Comenta aca!', rows: 4, cols: 60, class: 'span8'
   .form-
     = f.submit 'Comentar' ,class: 'btn btn-success'

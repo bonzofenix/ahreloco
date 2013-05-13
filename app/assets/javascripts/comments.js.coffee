@@ -16,10 +16,14 @@ $ ->
         add_comment comment
 
   $('.new_comment .btn').click ->
-    add_comment 
+        
+    content = $('#message').val()
+    $('#comment_content').val(content)
+    $('#comment_content').val(content)
+    add_comment
       username: $('a#username').text().trim()
-      content:  $('#comment_content').val()
+      content: content
       time_ago:  '0 minutos'
 
     $('.comment').first().effect("highlight", {}, 3000)
-    $('#comment_content').val('')
+    $('#message').val('')
