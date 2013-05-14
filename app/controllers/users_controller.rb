@@ -1,6 +1,4 @@
 class UsersController < InheritedResources::Base
-  before_filter :authenticate_user!
-
   def show
     @user = User.find(params[:id])
     check_for_new_videos

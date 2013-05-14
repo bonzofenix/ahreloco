@@ -2,7 +2,8 @@ class VideosController < InheritedResources::Base
   before_filter :authenticate_user!
 
   def upload
-    @video = Video.create(params[:video].merge({playlist_id: arl_manager.playlist_id,
+    arl_manger.playlist_id
+    @video = Video.create(params[:video].merge({playlist_id: Playlist.last.id,
       user_id: current_user.id, published_at: Date.today }))
    
     if @video
