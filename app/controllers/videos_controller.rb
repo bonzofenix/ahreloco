@@ -43,7 +43,7 @@ class VideosController < InheritedResources::Base
               'concurso', 'red social', 'comunidad', 'youtubers', 'youtube', 'Rate', 
               'Subscribers' ],
             private: false, 
-         #   list: "denied"
+            list: "denied"
           }
   end
 end
