@@ -5,4 +5,6 @@
       %td= i+1
       %td
         =link_to v.title, user_path(v.user, video_id: v.id)
-        %small.muted= "de #{v.user.username}"
+        %small.muted
+          de
+          =link_to v.user.username, user_path(v.user, video_id: v.id)
