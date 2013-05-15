@@ -2,7 +2,7 @@ class VideosController < InheritedResources::Base
   before_filter :authenticate_user!
 
   def upload
-    arl_manger.playlist_id
+    arl_manager.playlist
     @video = Video.create(params[:video].merge({playlist_id: Playlist.last.id,
       user_id: current_user.id, published_at: Date.today }))
    
@@ -37,7 +37,7 @@ class VideosController < InheritedResources::Base
   private 
   def options_for(video)
     opts = {title: video.title,
-            description: '',
+            description: video.description,
             category: 'People',
             keywords: ['test'],
             private: false, 

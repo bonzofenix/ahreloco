@@ -13,13 +13,29 @@
     %h4
       El video ganador aparecera en la Home de AhReLoco.tv junto a los ultimos videos de nuestros programas mas vistos y en nuestra pagina de facebook para que puedas hacer crecer y conocer tu canal de Youtube.
 %hr
-%h3
-  terminos y condiciones:
+.row-fluid
+  .span6
+    %h3
+      Datos del video:
+    = form_for @video, url: upload_new_video_path, html: { class: 'form-horizontal' } do |f|
+      .control-group
+        %label.control-label
+          Titulo
+        .controls
+          = f.text_field :title, placeholder: 'Titulo del video', class: 'text_field'
+      .control-group
+        %label.control-label
+          Descripcion
+        .controls
+          = f.text_area :description, placeholder: 'Descripcion del video', class: 'text_field',
+            cols: 40, rows: 10
+      .control-group
+        .controls
+          = f.submit 'Acepto terminos y condiciones!', class: 'btn btn-success'
 
-%textarea{'cols' => 40, 'rows' => 10}
-  El concurso se llevara acabo de domingo a domingo, teniendo tiempo de enviar videos hasta el jueves de esa semana en cuestion. Los videos no pueden infligir ninguna ley de copyright ni contener pornografia. El contenido debe ser exclusivo para cada concurso y no puede ser resubido a otro canal de YouTube. Los datos de contacto deber ser reales y en caso de no cumplir alguna de estas clausulas se tomaran las medidas necesarias segun YouTube Argentina disponga sobre el canal que participo del concurso, liberando al canal de AhReLocoTv de toda culpa y cargo. A efectos del presente, el usuario, al participar del concurso, acepta ceder los derechos de los contenidos subidos al canal de AhrelocoTV y todas las resubidas que existan en la plataforma de YouTube. El usuario acepta que Faro latino en representacion de AhrelocoTV, incluya publicidades en los videos. El ganador  sera el video con mas vistas al finalizar la semana y en consecuencia aparecera su video como recomendado en la pagina principal del sitio AhReLoco.Tv entre los programas mas importantes del sitio, como asi tambiwn en la pagina de Facebook de AhReLocoTv por el periodo de una semana hasta el proximo ganador.
-%hr
-= form_for @video, url: upload_new_video_path do |f|
-  = f.text_field :title, placeholder: 'Titulo del video', class: 'text_field'
-  %br
-  = f.submit 'Acepto terminos y condiciones!', class: 'btn btn-success'
+  .span6.well
+    %h3
+      terminos y condiciones:
+
+    %textarea{'cols' => 40, 'rows' => 10}
+      El concurso se llevara acabo de domingo a domingo, teniendo tiempo de enviar videos hasta el jueves de esa semana en cuestion. Los videos no pueden infligir ninguna ley de copyright ni contener pornografia. El contenido debe ser exclusivo para cada concurso y no puede ser resubido a otro canal de YouTube. Los datos de contacto deber ser reales y en caso de no cumplir alguna de estas clausulas se tomaran las medidas necesarias segun YouTube Argentina disponga sobre el canal que participo del concurso, liberando al canal de AhReLocoTv de toda culpa y cargo. A efectos del presente, el usuario, al participar del concurso, acepta ceder los derechos de los contenidos subidos al canal de AhrelocoTV y todas las resubidas que existan en la plataforma de YouTube. El usuario acepta que Faro latino en representacion de AhrelocoTV, incluya publicidades en los videos. El ganador  sera el video con mas vistas al finalizar la semana y en consecuencia aparecera su video como recomendado en la pagina principal del sitio AhReLoco.Tv entre los programas mas importantes del sitio, como asi tambiwn en la pagina de Facebook de AhReLocoTv por el periodo de una semana hasta el proximo ganador.

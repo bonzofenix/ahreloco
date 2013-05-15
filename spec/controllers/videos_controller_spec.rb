@@ -15,6 +15,7 @@ describe VideosController do
 
   describe 'when user is logged in' do
     before do
+      create :playlist
       sign_in(user)
     end
 
@@ -30,12 +31,17 @@ describe VideosController do
         end.to change{ Video.count }
       end
 
+
       describe 'created video' do
-        before{ post :upload, video: attributes_for(:video) }
+        before do
+          post :upload, video: attributes_for(:video) 
+        end
+  
         subject{ assigns :video }  
         
         its(:published_at){ should_not be_nil }
         its(:playlist_id){ should_not be_nil }
+        its(:description){ should_not be_nil }
         its(:user){ should_not be_nil }
       end
       

@@ -12,7 +12,7 @@ class Video < ActiveRecord::Base
 
   attr_accessible :video_id, :title, :is_complete, :likes, :dislikes, :playlist_id,
     :rater_count, :published_at, :arl_views_today, :arl_views_week, :arl_views_month,:view_count,
-    :user_id
+    :user_id, :description
 
   
   def update_with(video)

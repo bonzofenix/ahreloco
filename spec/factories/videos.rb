@@ -7,6 +7,7 @@ FactoryGirl.define do
 
   factory :video do
     title 'this is the title'
+    description 'this is a description'
     video_id 
 
     factory :older_video do
