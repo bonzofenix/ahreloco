@@ -39,7 +39,9 @@ class VideosController < InheritedResources::Base
     opts = {title: video.title,
             description: video.description,
             category: 'People',
-            keywords: ['test'],
+            keywords: [ 'ahreloco.tv', 'ahreloco', 'ah re loco', 'concurso semanal',
+              'concurso', 'red social', 'comunidad', 'youtubers', 'youtube', 'Rate', 
+              'Subscribers' ],
             private: false, 
          #   list: "denied"
           }
