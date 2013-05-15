@@ -41,7 +41,8 @@ class VideosController < InheritedResources::Base
             category: 'People',
             keywords: ['test'],
             private: false, 
-            list: "denied"}
+         #   list: "denied"
+          }
   end
 end
 
