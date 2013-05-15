@@ -2,8 +2,9 @@
 .row
   .span8
     %object{:height => "385", :width => "640"}
+      %param{:name => "allowFullScreen", :value => "true"}/
       %param{:name => "movie", :value => "http://www.youtube.com/v/#{@video.video_id}&autoplay=1"}/
-      %embed{:height => "385", :src => "http://www.youtube.com/v/#{@video.video_id}&autoplay=1", :type => "application/x-shockwave-flash", :width => "640"}
+      %embed{:height => "385", :src => "http://www.youtube.com/v/#{@video.video_id}&autoplay=1", :allowfullscreen=>"true", :type => "application/x-shockwave-flash", :width => "640"}
     - if current_user
       = render 'comments/new',video_id: @video.video_id
     = render 'comments/list'
