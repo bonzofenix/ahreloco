@@ -17,7 +17,7 @@ class UsersController < InheritedResources::Base
     return unless video
     debugger
     youtube_video = youtube_videos.select{|v| v.video_id.split(':').last == video.video_id }
-    video.update_with(youtube_video.first) unless youtube_video.empty?
+    video.update_with(youtube_video.first)
   end
  
   def has_videos?
