@@ -15,9 +15,8 @@ class UsersController < InheritedResources::Base
 
   def update_video_values
     return unless video
-    debugger
-    youtube_video = youtube_videos.select{|v| v.video_id.split(':').last == video.video_id }
-    video.update_with(youtube_video.first)
+    youtube_video = arl_manager.client.video_by(video.video_id)
+    video.update_with(youtube_video)
   end
  
   def has_videos?
@@ -39,6 +38,6 @@ class UsersController < InheritedResources::Base
   
 
   def youtube_videos
-    @youtube_videos ||= arl_manager.client.videos_by(user: @user.username).videos
+    @youtube_videos ||= client.videos_by(user: @user.username).videos
   end
 end
