@@ -50,4 +50,7 @@ class Video < ActiveRecord::Base
     end
     pa
   end
+  
+  def self.last_week_winner
+  end
 end

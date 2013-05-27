@@ -6,6 +6,7 @@ class Playlist < ActiveRecord::Base
     videos.order('view_count DESC').first
   end
 
-  def self.last_week_winner_video
+  def self.last_week
+    Playlist.all[-2]
   end
 end

@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @carrousel = Program.latest_videos
+    @carrousel = Program.latest_videos.merge(Playlist.last_week.winner_video)
     @top_today = Video.from_community.top_today.limit(10)
     @top_week = Video.from_community.top_week.limit(10)
     @top_month = Video.from_community.top_month.limit(10)
