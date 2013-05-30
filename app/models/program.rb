@@ -8,6 +8,6 @@ class Program < ActiveRecord::Base
   end
 
   def self.latest_videos
-    all.collect {|p| p.latest_video }.compact.sort{ |a,b| a.published_at <=> b.published_at }
+    all.collect {|p| p.latest_video }.compact.sort{ |a,b| b.published_at <=> a.published_at  }
   end
 end
