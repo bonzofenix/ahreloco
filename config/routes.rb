@@ -18,6 +18,7 @@ Ahreloco::Application.routes.draw do
 
   resources :home, only: [:index]
   resources :team, only: [:index]
+  resources :playlist, only: [:index]
 
   resources :videos , only: [:index,:new, :create] do
     new do

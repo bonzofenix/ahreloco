@@ -15,6 +15,7 @@ describe HomeController do
       describe 'top videos' do
         before do
           create :playlist, :with_video 
+          create :playlist, :with_video 
           create :video
           get :index
         end
@@ -37,10 +38,6 @@ describe HomeController do
           assigns(:top_today_programs).should_not be_nil
           assigns(:top_week_programs).should_not be_nil
           assigns(:top_month_programs).should_not be_nil
-        end
-      
-        it 'assings the last week winner' do
-          assigns(:last_week_winner).should_not be_nil
         end
       end
     end

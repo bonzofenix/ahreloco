@@ -25,9 +25,20 @@ describe Program do
       other_program_with_channels.latest_video]
   end
 
-  it 'returns latest video' do  
-    program.users.first.videos.create(attributes_for(:older_video))
-    latest = program.users.first.videos.create(attributes_for(:video))
-    program.latest_video.should == latest 
+  describe '.latest_videos' do
+    
+    it 'returns the latest video of a program' do  
+      latest = nil
+      program.users.first.videos.tap do |vs|
+        vs.create(attributes_for(:older_video))
+        latest = vs.create(attributes_for(:video))
+      end
+
+      program.latest_video.should == latest 
+    end
+  
+    it 'sorts videos by latest published' do
+      u      
+    end
   end
 end
