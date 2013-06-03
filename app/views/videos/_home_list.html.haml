@@ -4,7 +4,7 @@
     %tr
       %td= i+1
       %td
-        =link_to v.title, user_path(v.user, video_id: v.id)
+        =link_to truncate(v.title,length: 50), user_path(v.user, video_id: v.id)
         %small.muted
           de
           =link_to v.user.username, user_path(v.user, video_id: v.id)
