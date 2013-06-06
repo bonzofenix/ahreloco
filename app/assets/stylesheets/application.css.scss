@@ -99,3 +99,23 @@ background-color: #1684c2;
 .muted a{ 
   color: #999999; 
 }
+
+.overlay{
+  opacity: 0.5;
+  height:100%;
+  width:100%;
+  position:fixed;
+  left:0;
+  top:0;
+  z-index:1 !important;
+  background-color:black;
+}
+#loading {
+  background-image: url(loading.gif);
+  background-repeat: no-repeat;
+  background-position: center center;
+  cursor:auto;
+  width: 100%;
+  height: 100%;
+  z-index:15;
+}

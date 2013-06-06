@@ -22,13 +22,14 @@
         %label.control-label
           Titulo
         .controls
-          = f.text_field :title, placeholder: 'Titulo del video', class: 'text_field'
+          = f.text_field :title, placeholder: 'Titulo del video', class: 'text_field',
+            required: true
       .control-group
         %label.control-label
           Descripcion
         .controls
           = f.text_area :description, placeholder: 'Descripcion del video', class: 'text_field',
-            cols: 40, rows: 10
+            cols: 40, rows: 10, required: true
       .control-group
         .controls
           = f.submit 'Acepto terminos y condiciones!', class: 'btn btn-success'

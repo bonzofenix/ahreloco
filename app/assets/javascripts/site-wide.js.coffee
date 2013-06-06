@@ -15,3 +15,6 @@ $ ->
   $('.flexslider').flexslider
     animation: "slide"
   
+$ ->
+ $('.overlay').hide()
+
