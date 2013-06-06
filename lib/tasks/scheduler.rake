@@ -16,3 +16,11 @@ task :reset_month_views => :environment do
   Video.update_all(arl_views_month: 0) if Time.now.day == 1 
   puts "done."
 end
+
+task :delete_invalid_conquest_videos=> :environment do
+  puts "deleting videos..."
+  Video.where('playlist_id is not null and is_complete = false').destroy_all
+  puts "done."
+end
+
+
