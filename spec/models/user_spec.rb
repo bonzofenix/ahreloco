@@ -33,21 +33,21 @@ describe User do
       before{ user.add_videos([youtube_it_video]) }
       subject{ Video.last }
 
-      it 'adds the likes' do 
+      it 'adds the likes' do
         subject.likes.should_not be_nil
-      end 
+      end
 
-      it 'adds the dislikes' do 
+      it 'adds the dislikes' do
         subject.dislikes.should_not be_nil
-      end 
+      end
 
-      it 'adds the dislikes' do 
+      it 'adds the dislikes' do
         Video.last.rater_count.should_not be_nil
-      end 
-    end 
+      end
+    end
   end
-  
-  describe 'rating' do  
+
+  describe 'rating' do
     before do
       create :video, user: user, likes: 1, dislikes: 2
       create :video, user: user, likes: 3, dislikes: 1
